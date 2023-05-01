@@ -9,6 +9,9 @@ let gymController = {
     },
     workout: (req, res) => {
         res.render("gym/workoutpage")
+    },
+    progress: (req, res) => {
+        res.render("gym/progress")
     }
 }
 

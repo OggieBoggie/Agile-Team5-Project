@@ -26,6 +26,7 @@ app.use(
 app.get("/", gymController.index)
 app.get("/home", gymController.home)
 app.get("/workout", gymController.workout)
+app.get("/progress", gymController.progress)
 
 
 app.listen(3000, function () {

@@ -1,0 +1,18 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--clr-yellow);
+}
+
+h1 {
+    color: var(--clr-primary)
+}
+
+:root {
+    --clr-primary: #FF5F6D;
+    --clr-secondary: #FFB166;
+    --clr-yellow: #FFDD94;
+    --clr-blue: #84A59D;
+    --clr-gray: #2C3E50;
+    --clr-neutral: #F6F6F6;
+
+}

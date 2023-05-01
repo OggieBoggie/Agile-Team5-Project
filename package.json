@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "nodemon"
+  },
   "dependencies": {
     "all": "^0.0.0",
     "ejs": "^3.1.9",
