@@ -25,6 +25,8 @@ app.use(
 
 app.get("/home", gymController.home)
 
+app.get("/", gymController.home)
+
 app.listen(3000, function () {
     console.log(
       "Server running. Visit: localhost:3000/home in your browser 🚀"
