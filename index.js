@@ -23,9 +23,10 @@ app.use(
     })
   );
 
+app.get("/", gymController.index)
 app.get("/home", gymController.home)
+app.get("/workout", gymController.workout)
 
-app.get("/", gymController.home)
 
 app.listen(3000, function () {
     console.log(
