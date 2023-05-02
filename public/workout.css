@@ -9,7 +9,7 @@ section{
     margin: 10px;
 }
 p{
-    border: 5px solid black;
+    border: 2px solid black;
     margin: 10px;
     text-align: center;
 }
@@ -17,5 +17,10 @@ aside{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+}
+h2, h3{
+    border: 2px solid black;
+    margin: 10px;
+    width: 200px;
+    text-align: center;
 }
