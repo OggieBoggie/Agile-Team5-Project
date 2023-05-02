@@ -1,3 +1,40 @@
-h1{
-    color: red;
+/*------------------nav-------------------*/
+nav{
+    display: flex;
+    justify-content: center;
+    background-color: beige;
 }
+
+h1{
+    color: brown;
+    margin-right: 15px;
+}
+
+input{
+    margin-left: 15px;
+    width: 400px;
+}
+
+/*------------------body-------------------*/
+body{
+    height: 96vh;
+    display: grid;
+    grid-template-rows: 50px repeat(2, 0.5fr);
+}
+
+/*------------------article-------------------*/
+
+article{
+    border-style: solid;
+    width: 200px;
+    padding: 40px;
+}
+
+/*------------------section-------------------*/
+section{
+    display: flex;
+    justify-content: space-around;
+    align-self: center;
+}
+
+/*------------------footer-------------------*/
