@@ -1,3 +1,34 @@
-h1{
-    color: red;
+/*------------------nav-------------------*/
+nav{
+    display: flex;
+    justify-content: space-around;
+    background-color: beige;
 }
+
+h1{
+    color: brown;
+}
+
+/*------------------body-------------------*/
+body{
+    height: 96vh;
+    display: grid;
+    grid-template-rows: 50px repeat(2, 0.5fr);
+}
+
+/*------------------article-------------------*/
+
+article{
+    border-style: solid;
+    width: 200px;
+    padding: 40px;
+}
+
+/*------------------section-------------------*/
+section{
+    display: flex;
+    justify-content: space-around;
+    align-self: center;
+}
+
+/*------------------footer-------------------*/
