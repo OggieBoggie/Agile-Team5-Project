@@ -17,4 +17,7 @@
     <a type="button" class="btn btn-secondary">Lower pull</a>
     <a type="button" class="btn btn-secondary">Cardio #1</a>
     <a type="button" class="btn btn-secondary">Cardio #1</a>
+    <% for (let workout of workouts) { %>
+        <a type="button" class="btn btn-secondary"><%= workout["workout"] %></a>
+        <% } %>
 </aside>
