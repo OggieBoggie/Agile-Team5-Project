@@ -2,25 +2,30 @@ h1{
     color: brown;
     text-align: center;
     background-color: beige;
+    border: 2px solid black;
+
 }
 section{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     margin: 10px;
 }
-p{
-    border: 2px solid black;
-    margin: 10px;
-    text-align: center;
-}
 aside{
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
-h2, h3{
     border: 2px solid black;
+    margin: 10px;
+}
+a{
     margin: 10px;
     width: 200px;
     text-align: center;
+}
+h2{
+    margin: 10px;
+    width: 200px;
+    border: 2px solid black;
+    text-align: center;
+    background-color: beige;
 }
