@@ -3,14 +3,14 @@ body {
     background-color: var(--clr-biege);
 }
 
-h2 {
+h1 {
     color: var(--clr-brown);
 }
 
 :root {
     --clr-biege: beige;
     --clr-gray: #2C3E50;
-    --clr-brown: brown; 
+    --clr-brown: brown;
 
 }
 
@@ -19,9 +19,32 @@ table {
     font-size: 20px;
     border-collapse: collapse;
     width: 100%;
-  }
-  
-  th, td {
+}
+
+th,
+td {
     padding: 10px;
     border: 1px solid var(--clr-gray);
-  }
+}
+
+
+.session-details {
+    width: 60%;
+}
+
+#space {
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    padding: 10px;
+    margin: 5px;
+}
+
+.search {
+    width: 40%;
+}

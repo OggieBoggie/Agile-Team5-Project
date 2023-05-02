@@ -9,13 +9,25 @@
 <body>
   <main>
     <header>
-      <h2>Check Progress</h2>
+      <h1>Check Progress</h1>
+      <div class="container">
+      <button type="button" class="btn btn-light" id="space">Sort by Date</button>
+      <button type="button" class="btn btn-light" id="space">Sort by Type</button>
+      <button type="button" class="btn btn-light" id="space">+ Add Filters</button>
+      <label id="space">
+        <input type="checkbox" name="days"> Last 30 Days
+      </label>
+      <input type="text" name="search" id="space" class="search" placeholder="Search session details">
+      </div>
     </header>
+    <div id="space">
+
+    </div>
     <table>
       <tr>
         <th>Date</th>
         <th>Type</th>
-        <th>Session Details</th>
+        <th class="session-details">Session Details</th>
       </tr>
       <tr>
         <td>2023-05-02</td>
@@ -25,17 +37,17 @@
       <tr>
         <td>2023-04-28</td>
         <td>Lower Push</td>
-        <td>10</td>
+        <td>10 reps</td>
       </tr>
       <tr>
         <td>2022-06-07</td>
         <td>Upper Push</td>
-        <td>12</td>
+        <td>12 reps</td>
       </tr>
       <tr>
         <td>2024-11-28</td>
-        <td>Upper Push</td>
-        <td>20</td>
+        <td>Upper pull</td>
+        <td>20 reps</td>
       </tr>
   </main>
 </body>
