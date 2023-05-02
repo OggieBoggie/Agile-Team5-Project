@@ -1,4 +1,4 @@
-let database = require("../equipment");
+let database = require("../database");
 
 let gymController = {
     index: (req, res) => {
