@@ -1,12 +1,18 @@
 /*------------------nav-------------------*/
 nav{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     background-color: beige;
 }
 
 h1{
     color: brown;
+    margin-right: 15px;
+}
+
+input{
+    margin-left: 15px;
+    width: 400px;
 }
 
 /*------------------body-------------------*/
