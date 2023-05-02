@@ -1,3 +1,21 @@
 h1{
-    color: blueviolet;
+    color: brown;
+    text-align: center;
+    background-color: beige;
+}
+section{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    margin: 10px;
+}
+p{
+    border: 5px solid black;
+    margin: 10px;
+    text-align: center;
+}
+aside{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
