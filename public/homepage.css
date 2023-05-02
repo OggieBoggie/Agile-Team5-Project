@@ -24,10 +24,9 @@ body{
 
 /*------------------article-------------------*/
 
-article{
-    border-style: solid;
+button{
     width: 200px;
-    padding: 40px;
+    height: 200px;
 }
 
 /*------------------section-------------------*/
