@@ -1,8 +1,10 @@
 let database = require("../database");
+let database2 = require("../equipment")
 
 let gymController = {
     index: (req, res) => {
-        res.render("gym/index", {database})
+        let equipment = database["equipment"]
+        res.render("gym/index", {equipment})
     },
     home: (req, res) => {
         res.render("gym/homepage")
@@ -14,7 +16,8 @@ let gymController = {
         res.render("gym/progress")
     },
     selectworkout: (req, res) => {
-        res.render("gym/selectworkout")
+        let workouts = database2["workouts"]
+        res.render("gym/selectworkout", {workouts})
     }
 }
 
