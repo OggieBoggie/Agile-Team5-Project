@@ -1,13 +1,42 @@
-<h1>Select Workout</h1>
+<header class="p-3 mb-2 bg-dark text-white d-flex flex-row justify-content-between">
+    <h1>Select Workout</h1>
+    <div class="input-group">
+        <input type="text" class="form-control" aria-label="Text input with dropdown button">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <div role="separator" class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a>
+          </div>
+        </div>
+      </div>
+</header>
 <aside>
     <h2>Workouts</h2>
-    <a type="button" class="btn btn-secondary">Upper push</a>
-    <a type="button" class="btn btn-secondary">Upper pull</a>
-    <a type="button" class="btn btn-secondary">Lower push</a>
-    <a type="button" class="btn btn-secondary">Lower pull</a>
-    <a type="button" class="btn btn-secondary">Cardio #1</a>
-    <a type="button" class="btn btn-secondary">Cardio #1</a>
-    <% for (let w of workouts) { %>
-        <button type="button" class="btn btn-secondary"><%= w["workout"] %></button>
-    <% } %>
+    <div class="d-flex flex-row">
+        <div class="d-flex align-items-start flex-column bd-highlight mb-3">
+            <a type="button" class="btn btn-outline-secondary ml-2 mb-1">Upper push</a>
+            <a type="button" class="btn btn-outline-secondary ml-2 mb-1">Upper pull</a>
+            <a type="button" class="btn btn-outline-secondary ml-2 mb-1">Lower push</a>
+            <a type="button" class="btn btn-outline-secondary ml-2 mb-1">Lower pull</a>
+            <a type="button" class="btn btn-outline-secondary ml-2 mb-1">Cardio #1</a>
+            <a type="button" class="btn btn-outline-secondary ml-2 mb-1">Cardio #1</a>
+            <% for (let w of workouts) { %>
+                <a type="button" class="btn btn-outline-secondary ml-2 mb-1" href=<%= "/selectworkout/" + w.id %>><%= w["workout"] %></a>
+            <% } %>
+        </div>
+        <% if (selectedWorkout) { %>
+        <div class="card text-white bg-dark mb-3 ml-5" style="max-width: 50rem;">
+            <div class="card-header card-title"><%= selectedWorkout.workout %></div>
+            <div class="card-body">
+                <p class="card-text"><%= selectedWorkout.description %></p>
+              <p class="card-text"><%= selectedWorkout.equipment %></p>
+              <p class="card-text"><% for (let m of selectedWorkout.muscleGroups) { %><%= m %><% } %></p>
+            </div>
+          </div><% } %>
+
+    </div>
 </aside>

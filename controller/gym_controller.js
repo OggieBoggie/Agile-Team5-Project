@@ -16,8 +16,14 @@ let gymController = {
         res.render("gym/progress")
     },
     selectworkout: (req, res) => {
+        let selectedWorkout = undefined
+        let workouts = database.workouts
+        res.render("gym/selectworkout", {workouts, selectedWorkout})
+    },
+    displayWorkout: (req, res) => {
         let workouts = database["workouts"]
-        res.render("gym/selectworkout", {workouts})
+        let selectedWorkout = database.workouts.find( workout => {return workout.id == req.params.id})
+        res.render("gym/selectworkout", {workouts, selectedWorkout})
     }
 }
 
