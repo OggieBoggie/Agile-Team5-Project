@@ -1,13 +1,11 @@
 /*------------------nav-------------------*/
-nav{
-    display: flex;
-    justify-content: center;
-    background-color: beige;
+header{
+    background-image: url("images/gym.png");
 }
 
 h1{
-    color: brown;
-    margin-right: 15px;
+    color: white;
+    margin-top: 120px;
 }
 
 input{

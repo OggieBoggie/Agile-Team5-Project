@@ -7,17 +7,3 @@
     <a type="button" class="btn btn-secondary">Exercise #4</a>
     <a type="button" class="btn btn-secondary">Exercise #5</a>
 </section>
-
-<h1>Select Workout</h1>
-<aside>
-    <h2>Workouts</h2>
-    <a type="button" class="btn btn-secondary">Upper push</a>
-    <a type="button" class="btn btn-secondary">Upper pull</a>
-    <a type="button" class="btn btn-secondary">Lower push</a>
-    <a type="button" class="btn btn-secondary">Lower pull</a>
-    <a type="button" class="btn btn-secondary">Cardio #1</a>
-    <a type="button" class="btn btn-secondary">Cardio #1</a>
-    <% for (let workout of workouts) { %>
-        <a type="button" class="btn btn-secondary"><%= workout["workout"] %></a>
-        <% } %>
-</aside>

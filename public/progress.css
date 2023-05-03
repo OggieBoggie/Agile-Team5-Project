@@ -1,18 +1,50 @@
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: var(--clr-yellow);
+    background-color: var(--clr-biege);
 }
 
 h1 {
-    color: var(--clr-primary)
+    color: var(--clr-brown);
 }
 
 :root {
-    --clr-primary: #FF5F6D;
-    --clr-secondary: #FFB166;
-    --clr-yellow: #FFDD94;
-    --clr-blue: #84A59D;
+    --clr-biege: beige;
     --clr-gray: #2C3E50;
-    --clr-neutral: #F6F6F6;
+    --clr-brown: brown;
 
+}
+
+table {
+    color: var(--clr-gray);
+    font-size: 20px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    padding: 10px;
+    border: 1px solid var(--clr-gray);
+}
+
+
+.session-details {
+    width: 60%;
+}
+
+#space {
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    padding: 10px;
+    margin: 5px;
+}
+
+.search {
+    width: 40%;
 }

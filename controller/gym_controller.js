@@ -1,4 +1,4 @@
-let database = require("../equipment");
+let database = require("../database");
 
 let gymController = {
     index: (req, res) => {
@@ -14,6 +14,9 @@ let gymController = {
     },
     progress: (req, res) => {
         res.render("gym/progress")
+    },
+    selectworkout: (req, res) => {
+        res.render("gym/selectworkout")
     }
 }
 
