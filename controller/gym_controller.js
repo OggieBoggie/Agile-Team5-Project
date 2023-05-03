@@ -1,5 +1,5 @@
 let database = require("../database");
-let database2 = require("../equipment")
+
 
 let gymController = {
     index: (req, res) => {
@@ -16,7 +16,7 @@ let gymController = {
         res.render("gym/progress")
     },
     selectworkout: (req, res) => {
-        let workouts = database2["workouts"]
+        let workouts = database["workouts"]
         res.render("gym/selectworkout", {workouts})
     }
 }
