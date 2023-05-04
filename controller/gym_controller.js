@@ -15,6 +15,9 @@ let gymController = {
     progress: (req, res) => {
         res.render("gym/progress")
     },
+    calendar: (req, res) => {
+        res.render("gym/calendar")
+    },
     selectworkout: (req, res) => {
         let selectedWorkout = undefined
         let workouts = database.workouts
