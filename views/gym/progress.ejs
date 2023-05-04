@@ -6,18 +6,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
   <link href="progress.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
   <main>
     <header>
       <h1>Check Progress</h1>
       <div class="container">
-      <button type="button" class="btn btn-light" id="space">Sort by Date</button>
-      <button type="button" class="btn btn-light" id="space">Sort by Type</button>
-      <button type="button" class="btn btn-light" id="space">+ Add Filters</button>
-      <label id="space">
-        <input type="checkbox" name="days"> Last 30 Days
-      </label>
-      <input type="text" name="search" id="space" class="search" placeholder="Search session details">
+        <a class="btn btn-light btn-lg" id="space">Filter Date</a>
+        <a class="btn btn-light btn-lg" id="space">Filter Type</a>
+        <a class="btn btn-light btn-lg" id="space" href="/progress/calendar">Calendar View</a>
+        <label id="space">
+          <input type="checkbox" name="days"> Last 30 Days
+        </label>
+        <input type="text" name="search" id="space" class="search" placeholder="Search session details">
       </div>
     </header>
     <div id="space">
@@ -51,4 +52,3 @@
       </tr>
   </main>
 </body>
-
