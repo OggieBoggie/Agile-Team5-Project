@@ -18,25 +18,26 @@
     <h2>Workouts</h2>
     <div class="d-flex flex-row">
         <div class="d-flex align-items-start flex-column bd-highlight mb-3">
-            <a type="button" class="btn btn-outline-secondary ml-2 mb-1">Upper push</a>
+            <!-- <a type="button" class="btn btn-outline-secondary ml-2 mb-1">Upper push</a>
             <a type="button" class="btn btn-outline-secondary ml-2 mb-1">Upper pull</a>
             <a type="button" class="btn btn-outline-secondary ml-2 mb-1">Lower push</a>
             <a type="button" class="btn btn-outline-secondary ml-2 mb-1">Lower pull</a>
             <a type="button" class="btn btn-outline-secondary ml-2 mb-1">Cardio #1</a>
-            <a type="button" class="btn btn-outline-secondary ml-2 mb-1">Cardio #1</a>
+            <a type="button" class="btn btn-outline-secondary ml-2 mb-1">Cardio #1</a> -->
             <% for (let w of workouts) { %>
-                <a type="button" class="btn btn-outline-secondary ml-2 mb-1" href=<%= "/selectworkout/" + w.id %>><%= w["workout"] %></a>
+                <a type="button" class="btn btn-outline-secondary ml-2 mb-1" href=<%= "/selectworkout/" + w.id %>><%= w["name"] %></a>
             <% } %>
         </div>
         <% if (selectedWorkout) { %>
+            <% for (let e of exercise_objects) { %>
         <div class="card text-white bg-dark mb-3 ml-5" style="max-width: 50rem;">
-            <div class="card-header card-title"><%= selectedWorkout.workout %></div>
+            <div class="card-header card-title"><%= e.exercise %></div>
             <div class="card-body">
-                <p class="card-text"><%= selectedWorkout.description %></p>
-              <p class="card-text"><%= selectedWorkout.equipment %></p>
-              <p class="card-text"><% for (let m of selectedWorkout.muscleGroups) { %><%= m %><% } %></p>
+                <p class="card-text"><%= e.description %></p>
+              <p class="card-text">Equipment Needed: <% for (let n of e.equipment) { %><%= n %><% } %></p>
+              <p class="card-text">Muscle Groups: <% for (let m of e.muscleGroups) { %><%= m %><% } %></p>
             </div>
-          </div><% } %>
+          </div><% } } %>
 
     </div>
 </aside>

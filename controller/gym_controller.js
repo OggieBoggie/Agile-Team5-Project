@@ -21,9 +21,16 @@ let gymController = {
         res.render("gym/selectworkout", {workouts, selectedWorkout})
     },
     displayWorkout: (req, res) => {
+        let exercises = database["exercises"]
         let workouts = database["workouts"]
         let selectedWorkout = database.workouts.find( workout => {return workout.id == req.params.id})
-        res.render("gym/selectworkout", {workouts, selectedWorkout})
+        let exercise_objects = []
+        for (let e of exercises) {
+            if (selectedWorkout.exercise_list.includes(e.exercise)) {
+                exercise_objects.push(e)
+            }
+        }
+        res.render("gym/selectworkout", {workouts, exercise_objects, selectedWorkout})
     }
 }
 
