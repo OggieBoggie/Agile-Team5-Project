@@ -29,7 +29,7 @@ app.get("/workout", gymController.workout)
 app.get("/progress", gymController.progress)
 app.get("/selectworkout", gymController.selectworkout)
 app.get("/selectworkout/:id", gymController.displayWorkout)
-app.get("/progress/calendar", gymController.calendar)
+app.get("/calendar", gymController.calendar)
 
 app.listen(3000, function () {
     console.log(

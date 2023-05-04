@@ -10,4 +10,56 @@
 body {
     display: flex;
     align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: beige;
+}
+.wrapper {
+    width: 450px;
+    background: #d3d3d3;
+    border-radius: 10px;
+}
+.wrapper header{
+    display: flex;
+    align-items: center;
+    padding: 25px 30px 10px;
+    justify-content: space-between;
+}
+
+header .current-date{
+    font-size: 1.45rem;
+    font-weight: 500px;
+}
+
+header .icons span {
+    height: 38px;
+    width: 38px;
+    color: gray;
+    font-size: 1.9rem;
+    margin: 0 1px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 38px;
+    border-radius: 50%;
+}
+
+header .icons span:hover{
+    background-color: green;
+}
+
+header .icons span:last-child {
+    margin-right: 10px;
+}
+.calendar {
+    padding: 20px;
+}
+.calendar ul {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.calendar ul li{
+    width: calc(100% / 7)
 }
