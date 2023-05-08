@@ -4,6 +4,7 @@ body {
 }
 
 h1 {
+    font-size: 3em;
     color: var(--clr-brown);
 }
 
@@ -15,16 +16,8 @@ h1 {
 
 }
 
-table {
-    color: var(--clr-gray);
-    font-size: 20px;
-    border-collapse: collapse;
-    width: 100%;
-}
-
 th,
 td {
-    padding: 10px;
     border: 1px solid var(--clr-gray);
 }
 
@@ -43,7 +36,8 @@ td {
     flex-direction: row;
     flex: 1;
     padding: 10px;
-    margin: 5px;
+    padding-left: 0px;
+    margin: 0px;
 }
 
 .search {
@@ -51,12 +45,26 @@ td {
 }
 
 .content-table {
+    padding-left: 20px;
     border-collapse: collapse;
     font-size: 1.5em;
     margin: 25px 0;
     min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
 .content-table thead tr {
     background-color: var(--clr-lr);
+    text-align: left;
+    font-weight: bold;
+}
+
+.content-table th, .content-table td {
+    padding: 12px 15px;
+}
+
+main {
+    margin-left: 10px;
 }
