@@ -11,6 +11,7 @@ h1 {
     --clr-biege: beige;
     --clr-gray: #2C3E50;
     --clr-brown: brown;
+    --clr-lr: #ffcccb;
 
 }
 
@@ -33,7 +34,7 @@ td {
 }
 
 #space {
-    padding: 10px;
+    padding-right: 10px;
     margin-right: 10px;
 }
 
@@ -47,4 +48,15 @@ td {
 
 .search {
     width: 40%;
+}
+
+.content-table {
+    border-collapse: collapse;
+    font-size: 1.5em;
+    margin: 25px 0;
+    min-width: 400px;
+}
+
+.content-table thead tr {
+    background-color: var(--clr-lr);
 }
