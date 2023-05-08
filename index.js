@@ -25,9 +25,9 @@ app.use(
 
 app.get("/", gymController.index)
 app.get("/home", gymController.home)
-app.get("/workout", gymController.workout)
+app.get("/workout", gymController.randomWorkout)
 app.get("/progress", gymController.progress)
-app.get("/selectworkout", gymController.selectworkout)
+app.get("/selectworkout", gymController.selectWorkout)
 app.get("/selectworkout/:id", gymController.displayWorkout)
 app.get("/calendar", gymController.calendar)
 

@@ -1,9 +1,19 @@
 <link rel="stylesheet" href="/workout.css">
 <h1>Workout of The Day</h1>
-<section>
-    <a type="button" class="btn btn-secondary" id="Workout">Exercise #1</a>
+<section class="d-flex flex-column">
+
+    <% for (let e of randomWorkoutList) { %>
+        <div class="card text-white bg-dark mb-3 ml-5 mr-5" >
+            <div class="card-header card-title"><%= e.exercise %></div>
+            <div class="card-body">
+                <p class="card-text"><%= e.description %></p>
+              <p class="card-text">Equipment Needed: <% for (let n of e.equipment) { %><%= n %><% } %></p>
+              <p class="card-text">Muscle Groups: <% for (let m of e.muscleGroups) { %><%= m %><% } %></p>
+            </div>
+          </div><% } %>
+    <!-- <a type="button" class="btn btn-secondary" id="Workout">Exercise #1</a>
     <a type="button" class="btn btn-secondary" id="workout">Exercise #2</a>
     <a type="button" class="btn btn-secondary" id="Workout">Exercise #3</a>
     <a type="button" class="btn btn-secondary" id="Workout">Exercise #4</a>
-    <a type="button" class="btn btn-secondary" id="Workout">Exercise #5</a>
+    <a type="button" class="btn btn-secondary" id="Workout">Exercise #5</a> -->
 </section>
