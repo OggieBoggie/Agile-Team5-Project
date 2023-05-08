@@ -33,12 +33,12 @@ app.use(passport.session());
 
 // Routes
 app.get("/", gymController.index)
-app.get("/home", ensureAuthenticated,gymController.home)
-app.get("/workout", ensureAuthenticated, gymController.workout)
-app.get("/progress", ensureAuthenticated,gymController.progress)
-app.get("/selectworkout", ensureAuthenticated,gymController.selectworkout)
-app.get("/selectworkout/:id", ensureAuthenticated,gymController.displayWorkout)
-app.get("/calendar", ensureAuthenticated,gymController.calendar)
+app.get("/home",ensureAuthenticated, gymController.home)
+app.get("/workout",ensureAuthenticated, gymController.randomWorkout)
+app.get("/progress",ensureAuthenticated, gymController.progress)
+app.get("/selectworkout",ensureAuthenticated, gymController.selectWorkout)
+app.get("/selectworkout/:id",ensureAuthenticated, gymController.displayWorkout)
+app.get("/calendar",ensureAuthenticated, gymController.calendar)
 
 // Auth Routes
 app.get("/register", authController.register);

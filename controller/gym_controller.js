@@ -9,8 +9,38 @@ let gymController = {
     home: (req, res) => {
         res.render("gym/homepage")
     },
-    workout: (req, res) => {
-        res.render("gym/workoutpage")
+    randomWorkout: (req, res) => {
+    //     let randomWorkoutIDList = []
+    //     for (index in '01234') {
+    //         let nextNum = false
+
+    //         while (nextNum === false) {
+
+    //         let RandWorkoutID =  Math.round((Math.random() * (20 - 1)) + 1)
+
+    //         if (randomWorkoutIDList.includes(RandWorkoutID) === false) {
+    //             randomWorkoutIDList.push(RandWorkoutID)
+    //             nextNum = true
+    //         }   
+    //     }
+    // }
+    // console.log(randomWorkoutIDList)
+    // let randomWorkoutList = []
+    // for (let e of database.exercises){
+    //     if (randomWorkoutIDList.includes(e.id)){
+    //         randomWorkoutList.push(e)
+    //     }
+    // }
+        let randomWorkoutID = Math.round((Math.random() * database.workouts.length - 1) + 1)
+        randomWorkout = database.workouts.find(workout => {return workout.id === randomWorkoutID})
+        let randomWorkoutList = []
+        for (let e of database.exercises) {
+            if (randomWorkout.exercise_list.includes(e.exercise)){
+                randomWorkoutList.push(e)
+            }
+        }
+    console.log(randomWorkoutList)
+    res.render("gym/workoutpage", {randomWorkoutList})
     },
     progress: (req, res) => {
         res.render("gym/progress")
@@ -18,7 +48,7 @@ let gymController = {
     calendar: (req, res) => {
         res.render("gym/calendar")
     },
-    selectworkout: (req, res) => {
+    selectWorkout: (req, res) => {
         let selectedWorkout = undefined
         let workouts = database.workouts
         res.render("gym/selectworkout", {workouts, selectedWorkout})
