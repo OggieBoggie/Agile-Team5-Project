@@ -56,10 +56,18 @@ let gymController = {
     res.render("gym/workoutpage", {randomWorkoutList})
     },
     progress: (req, res) => {
-        res.render("gym/progress")
+        res.render("gym/progress");
     },
+    new: (req, res) => {
+        if (!req.user) {
+          res.render("../views/login");
+        } else {
+          res.render("gym/progress/create");
+        }
+      },
     calendar: (req, res) => {
-        res.render("gym/calendar")
+        let users = database.users
+        res.render("gym/calendar", {users})
     },
     selectWorkout: (req, res) => {
         let selectedWorkout = undefined

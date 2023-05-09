@@ -12,10 +12,10 @@
     <header>
       <h1>Check Progress</h1>
       <div class="container">
-        <a class="btn btn-success btn-lg" id="space">+ Add Session</a>
+        <a class="btn btn-success btn-lg" id="space" href="/progress/new">+ Add Session</a>
         <a class="btn btn-light btn-lg" id="space" onclick="sortColumn(0)">Filter Date</a>
         <a class="btn btn-light btn-lg" id="space" onclick="sortColumn(1)" >Filter Type</a>
-        <a class="btn btn-light btn-lg" id="space" href="/calendar">Calendar View</a>
+        <a class="btn btn-light btn-lg" id="space" href="/progress/calendar">Calendar View</a>
         <input type="text" name="search" id="searchInput" class="search" placeholder="Search session details" onkeyup="handleSearch()">
       </div>
     </header>
@@ -30,28 +30,7 @@
           <th class="session-details">Session Details</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>2023-05-02</td>
-          <td>Cardio</td>
-          <td>1 hour</td>
-        </tr>
-        <tr>
-          <td>2023-04-28</td>
-          <td>Lower Push</td>
-          <td>10 reps</td>
-        </tr>
-        <tr>
-          <td>2022-06-07</td>
-          <td>Upper Push</td>
-          <td>12 reps</td>
-        </tr>
-        <tr>
-          <td>2024-11-28</td>
-          <td>Upper Pull</td>
-          <td>20 reps</td>
-        </tr>
-      </tbody>
+      </ul>
   </main>
   <script src="progress.js"></script>
 </body>
