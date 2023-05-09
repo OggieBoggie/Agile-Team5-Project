@@ -38,6 +38,7 @@ app.get("/workout",ensureAuthenticated, gymController.randomWorkout)
 app.get("/progress",ensureAuthenticated, gymController.progress)
 app.get("/progress/new", gymController.new)
 app.get("/progress/calendar",ensureAuthenticated, gymController.calendar)
+app.post("/progress/", gymController.create);
 app.get("/selectworkout",ensureAuthenticated, gymController.selectWorkout)
 app.get("/selectworkout/:id",ensureAuthenticated, gymController.displayWorkout)
 

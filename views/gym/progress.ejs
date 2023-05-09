@@ -30,6 +30,15 @@
           <th class="session-details">Session Details</th>
         </tr>
       </thead>
+      <tbody>
+        <% for (let i = 0; i < progressReports.length; i++) { %>
+          <tr>
+            <td><%= progressReports[i].date %></td>
+            <td><%= progressReports[i].type %></td>
+            <td><%= progressReports[i].details %></td>
+          </tr>
+        <% } %>
+      </tbody>
       </ul>
   </main>
   <script src="progress.js"></script>
