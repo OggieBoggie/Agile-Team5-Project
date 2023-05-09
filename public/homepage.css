@@ -1,6 +1,7 @@
 /*------------------nav-------------------*/
 header{
     background-image: url("images/agile_gym_4.png");
+    background-size: cover;
 }
 
 h1{
@@ -35,6 +36,23 @@ section{
     display: flex;
     justify-content: space-around;
     align-self: center;
+
 }
 
 /*------------------footer-------------------*/
+/*------------------card background-------------------*/
+.card.border-dark.mb-31{
+    background-image: url("images/workouts1.png");
+    background-size: cover;
+    color: black;
+}
+.card.border-dark.mb-32{
+    background-image: url("images/workouts2.png");
+    background-size: cover;
+    color: black;
+}
+.card.border-dark.mb-33{
+    background-image: url("images/workouts3.png");
+    background-size: cover;
+    color: black;
+}
