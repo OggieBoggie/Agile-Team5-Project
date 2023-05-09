@@ -1,18 +1,20 @@
 <div class="container">
-    <form action="/progress" method="POST">
-      <div class="form-group">
-        <label for="date">Date</label>
-        <input type="text" class="form-control" id="titleInput" placeholder="yyyy-mm-dd" name="date">
-      </div>
-      <div class="form-group">
-        <label for="type">Type</label>
-        <input type="text" class="form-control" id="typeInput" placeholder="example: cardio, lower push, upper pull" name="type">
-      </div>
-      <div class="form-group">
-        <label for="details">Details</label>
-        <textarea class="form-control" id="detailsInput" placeholder="details about workout e.g. total reps, duration" name="details"></textarea>
-      </div>
-      <button type="submit" class="btn btn-default">Submit</button>
-    </form>
-  </div>
-  
+  <form action="/progress" method="POST">
+    <div class="form-group">
+      <label for="date">Date</label>
+      <input type="date" class="form-control" id="titleInput" placeholder="yyyy-mm-dd" name="date" required
+        min="2020-01-01" max="2030-12-31">
+    </div>
+    <div class="form-group">
+      <label for="type">Type</label>
+      <input type="text" class="form-control" id="typeInput" placeholder="example: cardio, lower push, upper pull"
+        name="type" required>
+    </div>
+    <div class="form-group">
+      <label for="details">Details</label>
+      <textarea class="form-control" id="detailsInput" placeholder="details about workout e.g. total reps, duration"
+        name="details" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
