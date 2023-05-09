@@ -1,6 +1,7 @@
 header{
-    background-image: url("images/agile_gym_7.png");
-    height: 400px;
+    background-image: url("images/workout_rope.png");
+    background-size: cover;
+    height: 100vh;  
     display: flex;
     justify-content: center;
     align-items: center;
