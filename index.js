@@ -36,15 +36,17 @@ app.get("/", gymController.index)
 app.get("/home",ensureAuthenticated, gymController.home)
 app.get("/workout",ensureAuthenticated, gymController.randomWorkout)
 app.get("/progress",ensureAuthenticated, gymController.progress)
+app.get("/progress/new", gymController.new)
+app.get("/progress/calendar",ensureAuthenticated, gymController.calendar)
+app.post("/progress/", gymController.create);
 app.get("/selectworkout",ensureAuthenticated, gymController.selectWorkout)
 app.get("/selectworkout/:id",ensureAuthenticated, gymController.displayWorkout)
-app.get("/calendar",ensureAuthenticated, gymController.calendar)
 
 // Auth Routes
 app.get("/register", authController.register);
 app.get("/login", forwardAuthenticated, authController.login);
 app.post("/register", authController.registerSubmit);
-app.post("/login", authController.loginSubmit); 
+app.post("/login", authController.loginSubmit);
 app.get("/logout", authController.logout);
 
 app.listen(3000, function () {
