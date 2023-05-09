@@ -1,11 +1,13 @@
 /*------------------nav-------------------*/
 header{
-    background-image: url("images/gym.png");
+    background-image: url("images/agile_gym_4.png");
+    background-size: cover;
 }
 
 h1{
     color: white;
-    margin-top: 120px;
+    margin-top: 150px;
+    /* font-size: xx-large; */
 }
 
 input{
@@ -18,6 +20,7 @@ body{
     height: 96vh;
     display: grid;
     grid-template-rows: 50px repeat(2, 0.5fr);
+    background-color: #F4F4F9;
 }
 
 
@@ -33,6 +36,23 @@ section{
     display: flex;
     justify-content: space-around;
     align-self: center;
+
 }
 
 /*------------------footer-------------------*/
+/*------------------card background-------------------*/
+.card.border-dark.mb-31{
+    background-image: url("images/workouts1.png");
+    background-size: cover;
+    color: black;
+}
+.card.border-dark.mb-32{
+    background-image: url("images/workouts2.png");
+    background-size: cover;
+    color: black;
+}
+.card.border-dark.mb-33{
+    background-image: url("images/workouts3.png");
+    background-size: cover;
+    color: black;
+}
