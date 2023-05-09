@@ -1,14 +1,18 @@
 h1{
-    color:black;
+    color: white;
     text-align: center;
-    background-image:url("images/fitness.jpg");
+    background-image:url("images/agile_gym_7.png");
     background-size: cover;
     background-position: center;
-    height: 500px;
+    height: 400px;
 } 
 section{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     margin: 10px;
     gap:15px;
+}
+
+body{
+    background-color: #f4f4f9;
 }
