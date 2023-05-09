@@ -1,7 +1,9 @@
 <link rel="stylesheet" href="/workout.css">
-<h1>Workout of The Day</h1>
-<section class="d-flex flex-column">
+<header class="text-center">
+  <h1 class="display-1">Workout of the Day</h1>
+</header>
 
+<section class="d-flex flex-column">
     <% for (let e of randomWorkoutList) { %>
         <div class="card text-white bg-dark mb-3 ml-5 mr-5" >
             <div class="card-header card-title"><%= e.exercise %></div>
