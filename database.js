@@ -1,26 +1,6 @@
 // const { workouts, equipment } = require("./AgileProject/database");
 
 let Database = {
-    users :  [
-      { 
-          id : 1,
-          name: "jimmy",
-          email: "jimmy123@gmail.com",
-          password: "ji",
-      },
-      {
-          id: 2,
-          name: "Johnny Doe",
-          email: "johnny123@gmail.com",
-          password: "jo",
-      },
-      {
-          id: 3,
-          name: "cindy",
-          email: "cindy@gmail.com",
-          password: "c",
-      }
-  ],
     equipment: ["dumbbell", "swiss ball"],
     exercises: [
         {
