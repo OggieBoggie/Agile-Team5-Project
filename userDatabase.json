@@ -5,7 +5,7 @@
             "name": "jimmy",
             "email": "jimmy123@gmail.com",
             "password": "ji",
-            "progress": []
+            "progress": [{"date": "2023-01-05", "type": "cardio", "details": "1 hour"}]
         },
         {
             "id": "U2",
