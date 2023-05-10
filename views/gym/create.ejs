@@ -7,12 +7,18 @@
     </div>
     <div class="form-group">
       <label for="type">Type</label>
-      <input type="text" class="form-control" id="typeInput" placeholder="example: cardio, lower push, upper pull"
-        name="type" required>
+      <select class="form-control" id="typeInput" name="type" required>
+        <option value="" selected disabled>Select a type</option>
+        <% exercises.forEach(exercise => { %>
+          <option value="<%= exercise.exercise %>"><%= exercise.exercise %></option>
+        <% }) %>
+        <option value="cardio">Cardio</option>
+        <option value="cardio">Other</option>
+      </select>
     </div>
     <div class="form-group">
       <label for="details">Details</label>
-      <textarea class="form-control" id="detailsInput" placeholder="details about workout e.g. total reps, duration"
+      <textarea class="form-control" id="detailsInput" placeholder="Details about the workout (e.g., total reps, duration)"
         name="details" required></textarea>
     </div>
     <button type="submit" class="btn btn-default">Submit</button>

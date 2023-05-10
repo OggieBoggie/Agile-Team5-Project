@@ -1,13 +1,13 @@
 // user database
-let fs = require("fs");
-let userDatabase = undefined;
-fs.readFile("./userDatabase.json", (err, data) => {
-  if (err) {
-    console.log(err);
-  } else {
-    userDatabase = JSON.parse(data);
-  }
-});
+let fs = require('fs')
+let userDatabase = undefined
+fs.readFile('../userDatabase.json', (err,data)=>{
+    if (err){
+        console.log(err)
+    } else {
+        userDatabase = JSON.parse(data)
+    }
+})
 
 const userModel = {
   findOne: (email) => {
