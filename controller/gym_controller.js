@@ -3,7 +3,7 @@ let database = require("../database");
 // user database
 let fs = require("fs");
 let userDatabase = undefined;
-fs.readFile("./userDatabase.json", (err, data) => {
+fs.readFile("../userDatabase.json", (err, data) => {
     if (err) {
         console.log(err);
     } else {
@@ -26,27 +26,7 @@ let gymController = {
         }
     },
     randomWorkout: (req, res) => {
-        //     let randomWorkoutIDList = []
-        //     for (index in '01234') {
-        //         let nextNum = false
 
-        //         while (nextNum === false) {
-
-        //         let RandWorkoutID =  Math.round((Math.random() * (20 - 1)) + 1)
-
-        //         if (randomWorkoutIDList.includes(RandWorkoutID) === false) {
-        //             randomWorkoutIDList.push(RandWorkoutID)
-        //             nextNum = true
-        //         }
-        //     }
-        // }
-        // console.log(randomWorkoutIDList)
-        // let randomWorkoutList = []
-        // for (let e of database.exercises){
-        //     if (randomWorkoutIDList.includes(e.id)){
-        //         randomWorkoutList.push(e)
-        //     }
-        // }
         let randomWorkoutID = Math.round(
             Math.random() * (database.workouts.length - 1) + 1
         );
@@ -78,6 +58,10 @@ let gymController = {
         if (!req.user) {
             return res.render("../views/login");
         }
+        user = req.user
+        let dbsession = req.session.db
+
+        userdb = userDatabase.users.find(user => {return user.id === req.user.id})
 
         if (!req.user.totalProgress) {
             req.user.totalProgress = [];
@@ -90,8 +74,23 @@ let gymController = {
         };
 
         req.user.totalProgress.push(progressReport);
-        res.render("gym/progress", { progressReports: req.user.totalProgress });
+        userdb.totalProgress = req.user.totalProgress
+        
+        req.session.dbsession = userDatabase
+
+        userDataString = JSON.stringify(userDatabase)
+
+        fs.writeFile('../userDatabase.json', userDataString, (err) => {
+            if (err) {
+
+            } else {
+
+                res.render("gym/progress", { progressReports: req.user.totalProgress });
+            }
+        })
     },
+
+
     calendar: (req, res) => {
         res.render("gym/calendar")
     },
