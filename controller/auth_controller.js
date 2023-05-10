@@ -1,3 +1,4 @@
+const { equipment } = require("../database");
 const passport = require("../middleware/passport");
 const userController = require("./userController").userModel;
 
@@ -31,15 +32,27 @@ let authController = {
   }),
 
   registerSubmit: (req, res) => {
-    let user = {
-      id: userDatabase.users.length + 1,
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password,
-      gymAccount: req.body.gymAccount,
-      gymName: req.body.gymName
-    };
-    userDatabase["users"].push(user)
+    if (req.body.gymAccount) {
+      let gymAccount = {
+        id: "G" + (userDatabase.gymAccounts.length + 1),
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
+        gymAccount: req.body.gymAccount,
+        gymName: req.body.gymName,
+        equipment: []
+      };
+      userDatabase["gymAccounts"].push(gymAccount)
+    } else {
+      let user = {
+        id: "U" + (userDatabase.users.length + 1),
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
+        progress: []
+      };
+      userDatabase["users"].push(user)
+    }
     databaseString = JSON.stringify(userDatabase)
     fs.writeFile('./userDatabase.json', databaseString, (err) =>{
       if (err){
