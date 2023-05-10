@@ -1,7 +1,7 @@
 header{
     background-image: url("images/workout_rope.png");
     background-size: cover;
-    height: 100vh;  
+    height: 45vh;  
     display: flex;
     justify-content: center;
     align-items: center;
