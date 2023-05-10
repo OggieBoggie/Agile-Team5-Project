@@ -63,10 +63,10 @@ let gymController = {
         res.render("gym/workoutpage", { randomWorkoutList });
     },
     progress: (req, res) => {
-        if (!req.user.totalProgress) {
-            req.user.totalProgress = [];
+        if (!req.user.progress) {
+            req.user.progress = [];
         }
-        const progressReports = req.user.totalProgress
+        const progressReports = req.user.progress
         res.render("gym/progress", { progressReports });
     },
     new: (req, res) => {
@@ -88,8 +88,10 @@ let gymController = {
             details: req.body.details,
         };
 
-        req.user.totalProgress.push(progressReport);
-        res.render("gym/progress", { progressReports: req.user.totalProgress });
+        req.user.progress.push(progressReport);
+
+        // Redirect the user to the progress page
+        res.redirect("/progress");
     },
     calendar: (req, res) => {
         res.render("gym/calendar")
