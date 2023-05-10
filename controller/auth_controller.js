@@ -17,6 +17,7 @@ fs.readFile('../userDatabase.json', (err,data) => {
 let authController = {
   login: (req, res) => {
     request = req
+    console.log(req.database)
     res.render("auth/login"), {request};
   },
 
@@ -43,6 +44,7 @@ let authController = {
         equipment: []
       };
       userDatabase["gymAccounts"].push(gymAccount)
+      req.database.gymAccounts.push(gymAccount)
     } else {
       let user = {
         id: "U" + (userDatabase.users.length + 1),
@@ -52,6 +54,7 @@ let authController = {
         progress: []
       };
       userDatabase["users"].push(user)
+      req.database.users.push(user)
     }
     databaseString = JSON.stringify(userDatabase)
     fs.writeFile('../userDatabase.json', databaseString, (err) =>{

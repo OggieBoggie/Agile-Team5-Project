@@ -64,6 +64,7 @@ let gymController = {
             return res.render("../views/login");
         }
         user = req.user
+        userDatabase = req.database
 
         userdb = userDatabase.users.find(user => {return user.id === req.user.id})
 
@@ -79,7 +80,7 @@ let gymController = {
 
         userDataString = JSON.stringify(userDatabase)
 
-        res.redirect("/progress");
+ 
         fs.writeFile('../userDatabase.json', userDataString, (err) => {
             if (err) {
 

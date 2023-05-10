@@ -9,8 +9,11 @@ fs.readFile('../userDatabase.json', (err,data)=>{
     }
 })
 
+
 const userModel = {
   findOne: (email) => {
+    data = fs.readFileSync('../userDatabase.json', 'utf-8')
+    userDatabase = JSON.parse(data)
     const user = userDatabase["users"].find((user) => user.email === email);
     if (user) {
       return user;
@@ -26,6 +29,8 @@ const userModel = {
   },
 
   findById: (id) => {
+    data = fs.readFileSync('../userDatabase.json', 'utf-8')
+    userDatabase = JSON.parse(data)
     const user = userDatabase["users"].find((user) => user.id === id);
     if (user) {
       return user;
