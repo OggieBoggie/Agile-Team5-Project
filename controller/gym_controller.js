@@ -18,6 +18,7 @@ let gymController = {
     },
     home: (req, res) => {
         request = req;
+        console.log(req.user)
         gym = req.user
         if (req.user.gymAccount) {
             res.render("gym/gymhomepage"), { gym }
