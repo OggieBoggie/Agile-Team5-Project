@@ -48,6 +48,14 @@ app.post("/progress/",sessionUserDatabase, gymController.create);
 app.get("/selectworkout",ensureAuthenticated, gymController.selectWorkout)
 app.get("/selectworkout/:id",ensureAuthenticated, gymController.displayWorkout)
 
+// Manager Routes
+app.get("/equipment", gymController.equipment)
+app.get("/equipment/:id", gymController.viewEditEquipment)
+app.get("/addequipment", gymController.viewAddEquipment)
+// app.post("/equipment/:id", gymController.editEquipment)
+// app.post("/addequipment", gymController.addEquipment)
+
+
 // Auth Routes
 app.get("/register",sessionUserDatabase, authController.register);
 app.get("/login", sessionUserDatabase ,forwardAuthenticated, authController.login);
