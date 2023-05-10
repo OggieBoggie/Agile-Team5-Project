@@ -52,11 +52,12 @@ let gymController = {
     },
     new: (req, res) => {
         if (!req.user) {
-            res.render("../views/login");
+          res.render("login");
         } else {
-            res.render("gym/create");
+          const exercises = database["exercises"]
+          res.render("gym/create", { exercises });
         }
-    },
+      },
 
     create: (req, res) => {
         if (!req.user) {
@@ -82,6 +83,7 @@ let gymController = {
 
         userDataString = JSON.stringify(userDatabase)
 
+        res.redirect("/progress");
         fs.writeFile('../userDatabase.json', userDataString, (err) => {
             if (err) {
 
