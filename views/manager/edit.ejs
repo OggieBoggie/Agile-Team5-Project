@@ -1,0 +1,16 @@
+<div class="container">
+  <h1 class="page-header">Edit</h1>
+  <form action=<%= "/equipment/" + equipment.id %> method="POST">
+
+    <div class="form-group">
+      <label for="title">Name</label>
+      <input type="text" name="name" class="form-control" id="titleInput" value="<%= equipment.name %>">
+    </div>
+    <div class="form-group">
+      <label for="title">Stock</label>
+      <input type="text" name="stock" class="form-control" id="titleInput" value="<%= equipment.stock %>">
+    </div>
+    <button type="submit" class="btn btn-outline-secondary">Submit</button>
+  </form>
+  <a href="/equipment" class="btn btn-outline-secondary">Back</a>
+</div>

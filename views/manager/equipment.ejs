@@ -1,0 +1,13 @@
+<header class="p-3 mb-2 bg-dark text-white">
+    <h1>Equipment</h1>
+</header>
+<a class="btn btn-outline-secondary" href=<%= "/addequipment" %>>Add Equipment</a>
+<ul class="list-group">
+  <% equipment.forEach(function (e) { %>
+    <li class="list-group-item">
+      <strong><%= e.name %>: </strong>
+      <%= e.stock %>
+      <a class="pull-right" href=<%= "/equipment/" + e.id %>>Edit</a>
+    </li>
+  <% }) %>
+</ul>
