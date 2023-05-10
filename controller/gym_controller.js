@@ -64,7 +64,10 @@ let gymController = {
         res.render("gym/workoutpage", { randomWorkoutList });
     },
     progress: (req, res) => {
-        const progressReports = req.user.totalProgress || [];
+        if (!req.user.totalProgress) {
+            req.user.totalProgress = [];
+        }
+        const progressReports = req.user.totalProgress
         res.render("gym/progress", { progressReports });
     },
     new: (req, res) => {
@@ -78,10 +81,6 @@ let gymController = {
     create: (req, res) => {
         if (!req.user) {
             return res.render("../views/login");
-        }
-
-        if (!req.user.totalProgress) {
-            req.user.totalProgress = [];
         }
 
         let progressReport = {
