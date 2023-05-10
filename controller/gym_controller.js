@@ -72,11 +72,12 @@ let gymController = {
     },
     new: (req, res) => {
         if (!req.user) {
-            res.render("../views/login");
+          res.render("login");
         } else {
-            res.render("gym/create");
+          const exercises = database["exercises"]
+          res.render("gym/create", { exercises });
         }
-    },
+      },
 
     create: (req, res) => {
         if (!req.user) {
@@ -91,7 +92,6 @@ let gymController = {
 
         req.user.progress.push(progressReport);
 
-        // Redirect the user to the progress page
         res.redirect("/progress");
     },
     calendar: (req, res) => {
