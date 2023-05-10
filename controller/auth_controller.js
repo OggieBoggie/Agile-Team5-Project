@@ -36,6 +36,7 @@ let authController = {
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
+      totalProgress: [],
       gymAccount: req.body.gymAccount,
       gymName: req.body.gymName
     };
