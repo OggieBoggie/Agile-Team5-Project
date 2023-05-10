@@ -18,7 +18,12 @@ let gymController = {
   },
   home: (req, res) => {
     request = req;
-    res.render("gym/homepage"), { request };
+    gym = req.user
+    if (req.user.gymAccount) {
+      res.render("gym/gymhomepage"), {gym}
+    } else {
+      res.render("gym/homepage"), { request };
+    }
   },
   randomWorkout: (req, res) => {
     //     let randomWorkoutIDList = []

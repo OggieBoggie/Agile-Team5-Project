@@ -1,5 +1,3 @@
-const database = require("../database")
-
 // user database
 let fs = require('fs')
 let userDatabase = undefined
@@ -29,4 +27,4 @@ const userModel = {
   },
 };
 
-module.exports = { database, userModel };
+module.exports = { userDatabase, userModel };

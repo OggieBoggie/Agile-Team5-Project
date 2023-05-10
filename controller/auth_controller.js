@@ -20,7 +20,8 @@ let authController = {
   },
 
   register: (req, res) => {
-    res.render("auth/register");
+    request = req
+    res.render("auth/register"), {request};
   },
 
 
@@ -35,9 +36,9 @@ let authController = {
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
-      gymAccount: req.body.gymAccount
+      gymAccount: req.body.gymAccount,
+      gymName: req.body.gymName
     };
-    console.log(req)
     userDatabase["users"].push(user)
     databaseString = JSON.stringify(userDatabase)
     fs.writeFile('./userDatabase.json', databaseString, (err) =>{
