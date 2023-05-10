@@ -1,24 +1,29 @@
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: var(--clr-biege);
+    background-color: #F4F4F9;
 }
 
 h1 {
     font-size: 3em;
-    color: var(--clr-brown);
+    color: white;
+    
 }
 
 :root {
     --clr-biege: beige;
     --clr-gray: #2C3E50;
     --clr-brown: brown;
-    --clr-lr: #ffcccb;
+    --clr-lr: #586f7c;
 
 }
 
 th,
 td {
     border: 1px solid var(--clr-gray);
+}
+
+thead{
+    color: white;
 }
 
 

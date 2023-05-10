@@ -18,6 +18,7 @@ let gymController = {
     },
     home: (req, res) => {
         request = req;
+        console.log(req.user)
         gym = req.user
         if (req.user.gymAccount) {
             res.render("gym/gymhomepage"), { gym }
@@ -43,7 +44,10 @@ let gymController = {
         res.render("gym/workoutpage", { randomWorkoutList });
     },
     progress: (req, res) => {
-        const progressReports = req.user.totalProgress || [];
+        if (!req.user.totalProgress) {
+            req.user.totalProgress = [];
+        }
+        const progressReports = req.user.totalProgress
         res.render("gym/progress", { progressReports });
     },
     new: (req, res) => {
@@ -59,7 +63,6 @@ let gymController = {
             return res.render("../views/login");
         }
         user = req.user
-        let dbsession = req.session.db
 
         userdb = userDatabase.users.find(user => {return user.id === req.user.id})
 
@@ -76,7 +79,6 @@ let gymController = {
         req.user.totalProgress.push(progressReport);
         userdb.totalProgress = req.user.totalProgress
         
-        req.session.dbsession = userDatabase
 
         userDataString = JSON.stringify(userDatabase)
 
