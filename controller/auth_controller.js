@@ -1,11 +1,10 @@
-let database = require("../database");
 const passport = require("../middleware/passport");
 const userController = require("./userController").userModel;
 
 // user database
 let fs = require('fs')
 let userDatabase = undefined
-fs.readFile('./userDatabase.json', (err,data)=>{
+fs.readFile('./userDatabase.json', (err,data) => {
     if (err){
         console.log(err)
     } else {
@@ -14,14 +13,15 @@ fs.readFile('./userDatabase.json', (err,data)=>{
 })
 
 
-
 let authController = {
   login: (req, res) => {
-    res.render("auth/login");
+    request = req
+    res.render("auth/login"), {request};
   },
 
   register: (req, res) => {
-    res.render("auth/register");
+    request = req
+    res.render("auth/register"), {request};
   },
 
 
@@ -32,10 +32,12 @@ let authController = {
 
   registerSubmit: (req, res) => {
     let user = {
-      id: database.users.length + 1,
+      id: userDatabase.users.length + 1,
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
+      gymAccount: req.body.gymAccount,
+      gymName: req.body.gymName
     };
     userDatabase["users"].push(user)
     databaseString = JSON.stringify(userDatabase)
