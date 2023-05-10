@@ -44,10 +44,10 @@ let gymController = {
         res.render("gym/workoutpage", { randomWorkoutList });
     },
     progress: (req, res) => {
-        if (!req.user.totalProgress) {
-            req.user.totalProgress = [];
+        if (!req.user.progress) {
+            req.user.progress = [];
         }
-        const progressReports = req.user.totalProgress
+        const progressReports = req.user.progress
         res.render("gym/progress", { progressReports });
     },
     new: (req, res) => {
@@ -67,18 +67,14 @@ let gymController = {
 
         userdb = userDatabase.users.find(user => {return user.id === req.user.id})
 
-        if (!req.user.totalProgress) {
-            req.user.totalProgress = [];
-        }
-
         let progressReport = {
             date: req.body.date,
             type: req.body.type,
             details: req.body.details,
         };
 
-        req.user.totalProgress.push(progressReport);
-        userdb.totalProgress = req.user.totalProgress
+        req.user.progress.push(progressReport);
+        userdb.progress = req.user.progress
         
 
         userDataString = JSON.stringify(userDatabase)
@@ -89,7 +85,7 @@ let gymController = {
 
             } else {
 
-                res.render("gym/progress", { progressReports: req.user.totalProgress });
+                res.render("gym/progress", { progressReports: req.user.progress });
             }
         })
     },
