@@ -48,7 +48,7 @@ let gymController = {
         //     }
         // }
         let randomWorkoutID = Math.round(
-            Math.random() * database.workouts.length - 1 + 1
+            Math.random() * (database.workouts.length - 1) + 1
         );
         randomWorkout = database.workouts.find((workout) => {
             return workout.id === randomWorkoutID;
