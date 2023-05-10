@@ -5,7 +5,7 @@ const userController = require("./userController").userModel;
 // user database
 let fs = require('fs')
 let userDatabase = undefined
-fs.readFile('./userDatabase.json', (err,data) => {
+fs.readFile('../userDatabase.json', (err,data) => {
     if (err){
         console.log(err)
     } else {
@@ -54,7 +54,7 @@ let authController = {
       userDatabase["users"].push(user)
     }
     databaseString = JSON.stringify(userDatabase)
-    fs.writeFile('./userDatabase.json', databaseString, (err) =>{
+    fs.writeFile('../userDatabase.json', databaseString, (err) =>{
       if (err){
         console.log(err)
       }

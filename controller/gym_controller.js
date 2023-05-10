@@ -3,7 +3,7 @@ let database = require("../database");
 // user database
 let fs = require("fs");
 let userDatabase = undefined;
-fs.readFile("./userDatabase.json", (err, data) => {
+fs.readFile("../userDatabase.json", (err, data) => {
     if (err) {
         console.log(err);
     } else {
@@ -27,29 +27,9 @@ let gymController = {
         }
     },
     randomWorkout: (req, res) => {
-        //     let randomWorkoutIDList = []
-        //     for (index in '01234') {
-        //         let nextNum = false
 
-        //         while (nextNum === false) {
-
-        //         let RandWorkoutID =  Math.round((Math.random() * (20 - 1)) + 1)
-
-        //         if (randomWorkoutIDList.includes(RandWorkoutID) === false) {
-        //             randomWorkoutIDList.push(RandWorkoutID)
-        //             nextNum = true
-        //         }
-        //     }
-        // }
-        // console.log(randomWorkoutIDList)
-        // let randomWorkoutList = []
-        // for (let e of database.exercises){
-        //     if (randomWorkoutIDList.includes(e.id)){
-        //         randomWorkoutList.push(e)
-        //     }
-        // }
         let randomWorkoutID = Math.round(
-            Math.random() * database.workouts.length - 1 + 1
+            Math.random() * (database.workouts.length - 1) + 1
         );
         randomWorkout = database.workouts.find((workout) => {
             return workout.id === randomWorkoutID;
@@ -64,10 +44,10 @@ let gymController = {
         res.render("gym/workoutpage", { randomWorkoutList });
     },
     progress: (req, res) => {
-        if (!req.user.progress) {
-            req.user.progress = [];
+        if (!req.user.totalProgress) {
+            req.user.totalProgress = [];
         }
-        const progressReports = req.user.progress
+        const progressReports = req.user.totalProgress
         res.render("gym/progress", { progressReports });
     },
     new: (req, res) => {
@@ -82,6 +62,13 @@ let gymController = {
         if (!req.user) {
             return res.render("../views/login");
         }
+        user = req.user
+
+        userdb = userDatabase.users.find(user => {return user.id === req.user.id})
+
+        if (!req.user.totalProgress) {
+            req.user.totalProgress = [];
+        }
 
         let progressReport = {
             date: req.body.date,
@@ -89,11 +76,23 @@ let gymController = {
             details: req.body.details,
         };
 
-        req.user.progress.push(progressReport);
+        req.user.totalProgress.push(progressReport);
+        userdb.totalProgress = req.user.totalProgress
+        
 
-        // Redirect the user to the progress page
-        res.redirect("/progress");
+        userDataString = JSON.stringify(userDatabase)
+
+        fs.writeFile('../userDatabase.json', userDataString, (err) => {
+            if (err) {
+
+            } else {
+
+                res.render("gym/progress", { progressReports: req.user.totalProgress });
+            }
+        })
     },
+
+
     calendar: (req, res) => {
         res.render("gym/calendar")
     },
