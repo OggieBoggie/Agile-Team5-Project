@@ -30,43 +30,10 @@
                     <li>Sa</li>
                 </ul>
                 <ul class="days">
-                    <li id="2023-05-30" class="inactive">30</li>
-                    <li id="2023-05-01">1</li>
-                    <li id="2023-05-02">2</li>
-                    <li id="2023-05-03">3</li>
-                    <li id="2023-05-04">4</li>
-                    <li id="2023-05-05">5</li>
-                    <li id="2023-05-06">6</li>
-                    <li id="2023-05-07">7</li>
-                    <li id="2023-05-08">8</li>
-                    <li id="2023-05-09">9</li>
-                    <li id="2023-05-10">10</li>
-                    <li id="2023-05-11">11</li>
-                    <li id="2023-05-12">12</li>
-                    <li id="2023-05-13">13</li>
-                    <li id="2023-05-14">14</li>
-                    <li id="2023-05-15">15</li>
-                    <li id="2023-05-16">16</li>
-                    <li id="2023-05-17">17</li>
-                    <li id="2023-05-18">18</li>
-                    <li id="2023-05-19">19</li>
-                    <li id="2023-05-20">20</li>
-                    <li id="2023-05-21">21</li>
-                    <li id="2023-05-22">22</li>
-                    <li id="2023-05-23">23</li>
-                    <li id="2023-05-24">24</li>
-                    <li id="2023-05-25">25</li>
-                    <li id="2023-05-26">26</li>
-                    <li id="2023-05-27">27</li>
-                    <li id="2023-05-28">28</li>
-                    <li id="2023-05-29">29</li>
-                    <li id="2023-05-30">30</li>
-                    <li id="2023-05-31">31</li>
-                    <li id="2023-06-01" class="inactive">1</li>
-                    <li id="2023-06-02" class="inactive">2</li>
-                    <li id="2023-06-03" class="inactive">3</li>
                 </ul>
             </div>
+        </div>
+        <div id="progress-report-details">
         </div>
     </div>
     <script>
@@ -97,9 +64,24 @@
             const progressReports = JSON.parse('<%- JSON.stringify(progressReports) %>');
             const matchingProgress = progressReports.filter((report) => report.date === dateID);
 
-            console.log(matchingProgress);
-        };
+            if (matchingProgress.length > 0) {
+                const details = document.getElementById("progress-report-details");
+                let html = '';
 
+                matchingProgress.forEach((progressReport) => {
+                    html += `
+                    <p>${progressReport.date}</p>
+                    <p>${progressReport.type}</p>
+                    <p>${progressReport.details}</p>
+                    <hr>`;
+                });
+
+                details.innerHTML = html;
+            } else {
+                details = document.getElementById("progress-report-details");
+                details.innerHTML = '';
+            }
+        };
         const createCalendar = () => {
             // gets first day of month
             let firstDayofMonth = new Date(currentYear, currentMonth, 1).getDay(),
