@@ -9,6 +9,16 @@ let date = new Date(),
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
 "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
 
+// formats an id for the date of the current list item
+// converts month and day into numbers
+const createDateID = (date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    // example if day is may 3rd, returns "2023-05-03"
+    return `${year}-${month}-${day}`
+}
+
 const createCalendar = () => {
     // gets first day of month
     let firstDayofMonth = new Date(currentYear, currentMonth, 1).getDay(),
@@ -21,16 +31,24 @@ const createCalendar = () => {
 
     // loop for going through days from last month giving them an inactive class
     for (let i = firstDayofMonth; i > 0; i--) {
-        liTag += `<li class="inactive">${lastDateofLastMonth - i + 1}</li>`
+        // pass the current date into createDateID to make id 
+        const date = new Date(currentYear, currentMonth, lastDateofLastMonth - i + 1);
+        const dateID = createDateID(date);
+        liTag += `<li id="${dateID}" class="inactive">${lastDateofLastMonth - i + 1}</li>`
     }
 
     // for loop to make list element for each date
     for (let i = 1; i <= lastDateofMonth; i++) {
-        liTag += `<li>${i}</li>`;
+        // pass the current date into createDateID to make id 
+        const date = new Date(currentYear, currentMonth, i);
+        const dateID = createDateID(date);
+        liTag += `<li id="${dateID}">${i}</li>`;
     }
 
     for (let i = lastDaysofMonth; i < 6; i++) {
-        liTag += `<li class="inactive">${i - lastDaysofMonth + 1}</li>`
+        const date = new Date(currentYear, currentMonth + 1, i - lastDaysofMonth + 1);
+        const dateID = createDateID(date);
+        liTag += `<li id="${dateID}" class="inactive">${i - lastDaysofMonth + 1}</li>`
     }
     currentDate.innerText = `${months[currentMonth]} ${currentYear}`;
     days.innerHTML = liTag
