@@ -64,9 +64,12 @@
             const progressReports = JSON.parse('<%- JSON.stringify(progressReports) %>');
             const matchingProgress = progressReports.filter((report) => report.date === dateID);
 
+            details = document.getElementById("progress-report-details");
+            const calendarDay = element.closest("li");
+
             if (matchingProgress.length > 0) {
-                const details = document.getElementById("progress-report-details");
                 let html = '';
+                
 
                 matchingProgress.forEach((progressReport) => {
                     html += `
@@ -77,9 +80,10 @@
                 });
 
                 details.innerHTML = html;
+                details.classList.add("progress-background");
             } else {
-                details = document.getElementById("progress-report-details");
                 details.innerHTML = '';
+                details.classList.remove("progress-background");
             }
         };
         const createCalendar = () => {

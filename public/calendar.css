@@ -107,3 +107,13 @@ header .icon span:last-child {
 .table {
     background-color: #CCCCCC;
 }
+
+#progress-report-details {
+    margin-left: 50px;
+    padding: 20px 20px 0px 20px;
+    font-size: 25px;
+}
+
+.progress-background {
+    background-color: lightgray;
+}
