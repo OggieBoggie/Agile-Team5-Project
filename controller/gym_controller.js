@@ -89,7 +89,8 @@ let gymController = {
   },
 
   calendar: (req, res) => {
-    res.render("gym/calendar");
+    const progressReports = req.user.progress;
+    res.render("gym/calendar", { progressReports });
   },
   selectWorkout: (req, res) => {
     let selectedWorkout = undefined;
