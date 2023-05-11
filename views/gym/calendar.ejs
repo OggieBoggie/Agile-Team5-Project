@@ -5,115 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link href="calendar.css" rel="stylesheet" type="text/css">
-    <style>
-        /* Import Google font - Poppins */
-@import url(https://fonts.googleapis.com/css2?family=Montserrat&display=swap);
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-}
-
-body {
-    background-color: beige;
-}
-
-.flex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.wrapper {
-    width: 450px;
-    background: #d3d3d3;
-    border-radius: 10px;
-    margin-top: 50px; 
-}
-
-.wrapper header {
-    display: flex;
-    align-items: center;
-    padding: 25px 30px 10px;
-    justify-content: space-between;
-}
-
-header .current-date {
-    font-size: 1.45rem;
-    font-weight: 500;
-}
-
-header .icon span {
-    height: 38px;
-    width: 38px;
-    color: gray;
-    font-size: 1.9rem;
-    margin: 0 1px;
-    cursor: pointer;
-    text-align: center;
-    line-height: 38px;
-    border-radius: 50%;
-}
-
-header .icon span:hover {
-    background-color: #CCCCCC;
-}
-
-header .icon span:last-child {
-    margin-right: 10px;
-}
-
-.calendar {
-    padding: 20px;
-}
-
-.calendar ul {
-    display: flex;
-    list-style: none;
-    flex-wrap: wrap;
-    text-align: center;
-}
-
-.calendar .days li {
-    z-index: 1;
-    cursor: pointer;
-    margin-top: 30px;
-}
-
-.calendar .weeks li {
-    font-weight: 500;
-}
-
-.calendar ul li {
-    position: relative;
-    width: calc(100% / 7)
-}
-
-.days li.inactive {
-    color: #8a8a8a;
-}
-
-.calendar .days li::before {
-    position: absolute;
-    content: "";
-    height: 40px;
-    width: 40px;
-    top: 50%;
-    left: 50%;
-    z-index: -1;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.days li:hover::before {
-    background-color: #CCCCCC;
-}
-
-.table {
-    background-color: #CCCCCC;
-}
-    </style>
+    <link href="/calendar.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -138,43 +30,9 @@ header .icon span:last-child {
                     <li>Sa</li>
                 </ul>
                 <ul class="days">
-                    <li class="inactive">30</li>
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
-                    <li>5</li>
-                    <li>6</li>
-                    <li>7</li>
-                    <li>8</li>
-                    <li>9</li>
-                    <li>10</li>
-                    <li>11</li>
-                    <li>12</li>
-                    <li>13</li>
-                    <li>14</li>
-                    <li>15</li>
-                    <li>16</li>
-                    <li>17</li>
-                    <li>18</li>
-                    <li>19</li>
-                    <li>20</li>
-                    <li>21</li>
-                    <li>22</li>
-                    <li>23</li>
-                    <li>24</li>
-                    <li>25</li>
-                    <li>26</li>
-                    <li>27</li>
-                    <li>28</li>
-                    <li>29</li>
-                    <li>30</li>
-                    <li>31</li>
-                    <li class="inactive">1</li>
-                    <li class="inactive">2</li>
-                    <li class="inactive">3</li>
                 </ul>
             </div>
         </div>
     </div>
+    <script src="/calendar.js"></script>
 </body>
