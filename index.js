@@ -50,6 +50,7 @@ app.get("/selectworkout/:id",ensureAuthenticated, gymController.displayWorkout)
 
 // Manager Routes
 app.get("/equipment", gymController.equipment)
+app.get('/equipment/delete/:id', sessionUserDatabase,gymController.deleteEquipment)
 app.get("/equipment/:id", gymController.viewEditEquipment)
 app.get("/addequipment", gymController.viewAddEquipment)
 app.post("/equipment/:id",sessionUserDatabase, gymController.editEquipment)

@@ -168,6 +168,33 @@ let gymController = {
     fs.writeFileSync('../userDatabase.json',dataString)
     res.redirect('/equipment')
   },
+  deleteEquipment: (req,res) =>{
+    let equipmentID = Number(req.params.id);
+
+    let equipmentToDelete = req.user.equipment.find(function (e) {
+      return e.id == equipmentID;
+    });
+    let equipmentIndex = req.user.equipment.indexOf(equipmentToDelete)
+    req.user.equipment.splice(equipmentIndex, 1);
+
+    for (let gymAc of req.database.gymAccounts) {
+      if (gymAc.id === req.user.id) {
+        gymAc.equipment.splice(equipmentIndex, 1)
+      }
+    }
+    for (let gymAc of req.database.gymAccounts) {
+      if (gymAc.id === req.user.id) {
+        for (let e in gymAc.equipment) {
+          gymAc.equipment[e].id = parseInt(e) + 1
+        }
+      }
+    }
+  
+
+    let dataString = JSON.stringify(req.database)
+    fs.writeFileSync('../userDatabase.json',dataString)
+    res.redirect("/equipment");
+  },
   viewAddEquipment: (req, res) => {
     let equipmentArray = []
     for (let ex of database.exercises) {

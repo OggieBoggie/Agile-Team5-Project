@@ -7,7 +7,8 @@
     <li class="list-group-item">
       <strong><%= e.name %>: </strong>
       <%= e.stock %>
-      <a class="pull-right" href=<%= "/equipment/" + e.id %>>Edit</a>
+      <a class="pull-right" href=<%= "/equipment/" + e.id %>>|   Edit   |</a>
+      <a class="pull-right" href=<%= "/equipment/delete/" + e.id %>>Delete    |</a>
     </li>
   <% }) %>
 </ul>
