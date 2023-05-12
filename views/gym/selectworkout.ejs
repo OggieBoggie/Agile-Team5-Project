@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="selectworkout.css">
 <header class="p-3 mb-2 bg-dark text-white">
     <h1>Select Workout</h1>
     <div class="input-group mt-4">
@@ -15,10 +16,10 @@
       </div>
 </header>
 <aside>
-    <h2 class="ml-3">Workouts</h2>
+    <p class="text-center fs-4"><b>Choose from any of the pre-made workouts below. Can't find what you're looking for, use the search bar above!</b></p>
     <hr class="mb-4"/>
-    <div class="d-flex flex-row">
-        <div class="d-flex align-items-start flex-column bd-highlight ml-4">
+  <div class="d-flex flex-column">
+        <div class="d-flex align-items-start flex-row bd-highlight ml-4">
             <!-- <a type="button" class="btn btn-outline-secondary ml-2 mb-1">Upper push</a>
             <a type="button" class="btn btn-outline-secondary ml-2 mb-1">Upper pull</a>
             <a type="button" class="btn btn-outline-secondary ml-2 mb-1">Lower push</a>
@@ -29,19 +30,29 @@
                 <a type="button" class="btn btn-outline-secondary ml-2 mb-3" href=<%= "/selectworkout/" + w.id %>><%= w["name"] %></a>
             <% } %>
         </div>
-        <div class="d-flex flex-column bd-highlight mb-3"  style="width: 100%;">
+      <div>
+        <div class="d-flex flex-row justify-content-between flex-wrap" style="width: 100%;">
           <% if (selectedWorkout) { %>
               <% for (let e of exercise_objects) { %>
-          <div class="card text-white bg-dark mb-3 ml-5 mr-5" >
+          <!-- <div class="card text-white bg-dark mb-3 ml-5 mr-5" >
               <div class="card-header card-title"><%= e.exercise %></div>
               <div class="card-body">
                   <p class="card-text"><%= e.description %></p>
                 <p class="card-text">Equipment Needed: <% for (let n of e.equipment) { %><%= n %><% } %></p>
                 <p class="card-text">Muscle Groups: <% for (let m of e.muscleGroups) { %><%= m %><% } %></p>
-              </div>
-            </div><% } } %>
-          
+              </div> -->
+              <div class="card border-dark bg-light" style="width: 18rem;">
+                <div class="card-header"><b><%= e.exercise %></b></div>
+                <div class="card-body text-dark">
+                  <p class="card-text"><%= e.description %></p>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item border-dark bg-light">Sets: 3, Reps: 12</li>
+                  <li class="list-group-item border-dark bg-light">Equipment Needed: <% for (let n of e.equipment) { %><%= n %><% } %></li>
+                  <li class="list-group-item border-dark bg-light">Muscle Groups: <% for (let m of e.muscleGroups) { %><%= m %><% } %></li>
+                </ul>
+           </div><% } } %>
         </div>
-
     </div>
 </aside>
+
