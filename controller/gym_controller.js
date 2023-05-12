@@ -53,8 +53,9 @@ let gymController = {
     if (!req.user) {
       res.render("login");
     } else {
+      const currentDate = new Date().toISOString().slice(0, 10);
       const exercises = database["exercises"];
-      res.render("gym/create", { exercises });
+      res.render("gym/create", { exercises, currentDate });
     }
   },
 
