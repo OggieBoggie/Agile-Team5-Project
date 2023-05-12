@@ -52,7 +52,7 @@ app.get("/selectworkout/:id",ensureAuthenticated, gymController.displayWorkout)
 app.get("/equipment", gymController.equipment)
 app.get("/equipment/:id", gymController.viewEditEquipment)
 app.get("/addequipment", gymController.viewAddEquipment)
-app.post("/equipment/:id", gymController.editEquipment)
+app.post("/equipment/:id",sessionUserDatabase, gymController.editEquipment)
 app.post("/addequipment", sessionUserDatabase, gymController.addEquipment)
 
 

@@ -2,10 +2,17 @@
   <h1 class="page-header">Edit</h1>
   <form action=<%= "/equipment/" + equipment.id %> method="POST">
 
-    <div class="form-group">
+    <div class='form-group'>
       <label for="title">Name</label>
-      <input type="text" name="name" class="form-control" id="titleInput" value="<%= equipment.name %>">
+      <select class="form-control" id="titleInput" name="name" required>
+        <option value="" selected disabled>Select a type</option>
+        <% equipmentArray.forEach(equipment => { %>
+          <option value="<%= equipment %>"><%= equipment %></option>
+        <% }) %>
+        </select>
     </div>
+
+
     <div class="form-group">
       <label for="title">Stock</label>
       <input type="text" name="stock" class="form-control" id="titleInput" value="<%= equipment.stock %>">
