@@ -17,7 +17,6 @@ fs.readFile('../userDatabase.json', (err,data) => {
 let authController = {
   login: (req, res) => {
     request = req
-    console.log(req.database)
     res.render("auth/login"), {request};
   },
 

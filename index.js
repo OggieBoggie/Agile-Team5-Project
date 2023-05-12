@@ -52,8 +52,8 @@ app.get("/selectworkout/:id",ensureAuthenticated, gymController.displayWorkout)
 app.get("/equipment", gymController.equipment)
 app.get("/equipment/:id", gymController.viewEditEquipment)
 app.get("/addequipment", gymController.viewAddEquipment)
-// app.post("/equipment/:id", gymController.editEquipment)
-// app.post("/addequipment", gymController.addEquipment)
+app.post("/equipment/:id", gymController.editEquipment)
+app.post("/addequipment", sessionUserDatabase, gymController.addEquipment)
 
 
 // Auth Routes
