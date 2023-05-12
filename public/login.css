@@ -1,15 +1,15 @@
 @keyframes slide {
     0% {
-      background-image: url("images/register1.png");
+      background-image: url("images/letsstart.jpg");
     }
     33% {
-        background-image: url("images/register2.png");
+        background-image: url("images/login.jpg");
       }
     66% {
-      background-image: url("images/register3.png");
+      background-image: url("images/ropes2.jpg");
     }
     100% {
-      background-image: url("images/register4.png");
+      background-image: url("images/workoutimage1.png");
     }
   }
   
