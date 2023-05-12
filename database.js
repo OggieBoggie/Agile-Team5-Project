@@ -140,7 +140,7 @@ let Database = {
           "id": 20,
           "exercise": "Box jumps",
           "muscleGroups": ["quads", "glutes"],
-          "equipment": ["box or bench"],
+          "equipment": ['box', 'bench'],
           "description": "Stand in front of a box or bench, jump onto the box with both feet, then jump back down."
         }
       ],

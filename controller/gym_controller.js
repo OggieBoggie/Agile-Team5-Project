@@ -130,10 +130,30 @@ let gymController = {
     // implement
   },
   viewAddEquipment: (req, res) => {
-    res.render("manager/add");
+    let equipmentArray = []
+    for (let ex of database.exercises) {
+      for (let e of ex.equipment){
+      if (equipmentArray.includes(e)) {
+      } else {
+        equipmentArray.push(e)
+      }
+    }
+    }
+    console.log(equipmentArray)
+    res.render("manager/add", { equipmentArray });
   },
   addEquipment: (req, res) => {
-    // implement
+    let newEquipment = {
+      id: req.user.equipment.length + 1,
+      name: req.body.name,
+      stock: req.body.stock
+    }
+    let gymAc = req.database.gymAccounts.find(gymAc => {return gymAc.id === req.user.id})
+    req.user.equipment.push(newEquipment)
+    gymAc.equipment.push(newEquipment)
+    let dataString = JSON.stringify(req.database)
+    fs.writeFileSync('../userDatabase.json',dataString)
+    res.redirect('/equipment')
   },
 };
 
