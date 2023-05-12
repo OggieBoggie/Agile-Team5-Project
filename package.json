@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "start": "nodemon"
+    "start": "nodemon",
+    "test": "jest"
   },
   "dependencies": {
     "@jest/globals": "^29.5.0",
