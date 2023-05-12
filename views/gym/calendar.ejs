@@ -5,115 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link href="calendar.css" rel="stylesheet" type="text/css">
-    <style>
-        /* Import Google font - Poppins */
-@import url(https://fonts.googleapis.com/css2?family=Montserrat&display=swap);
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-}
-
-body {
-    background-color: beige;
-}
-
-.flex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.wrapper {
-    width: 450px;
-    background: #d3d3d3;
-    border-radius: 10px;
-    margin-top: 50px; 
-}
-
-.wrapper header {
-    display: flex;
-    align-items: center;
-    padding: 25px 30px 10px;
-    justify-content: space-between;
-}
-
-header .current-date {
-    font-size: 1.45rem;
-    font-weight: 500;
-}
-
-header .icon span {
-    height: 38px;
-    width: 38px;
-    color: gray;
-    font-size: 1.9rem;
-    margin: 0 1px;
-    cursor: pointer;
-    text-align: center;
-    line-height: 38px;
-    border-radius: 50%;
-}
-
-header .icon span:hover {
-    background-color: #CCCCCC;
-}
-
-header .icon span:last-child {
-    margin-right: 10px;
-}
-
-.calendar {
-    padding: 20px;
-}
-
-.calendar ul {
-    display: flex;
-    list-style: none;
-    flex-wrap: wrap;
-    text-align: center;
-}
-
-.calendar .days li {
-    z-index: 1;
-    cursor: pointer;
-    margin-top: 30px;
-}
-
-.calendar .weeks li {
-    font-weight: 500;
-}
-
-.calendar ul li {
-    position: relative;
-    width: calc(100% / 7)
-}
-
-.days li.inactive {
-    color: #8a8a8a;
-}
-
-.calendar .days li::before {
-    position: absolute;
-    content: "";
-    height: 40px;
-    width: 40px;
-    top: 50%;
-    left: 50%;
-    z-index: -1;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.days li:hover::before {
-    background-color: #CCCCCC;
-}
-
-.table {
-    background-color: #CCCCCC;
-}
-    </style>
+    <link href="/calendar.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -123,8 +15,8 @@ header .icon span:last-child {
                 <p class="current-date">May 2023</p>
                 <a class="btn btn-secondary btn-lg" id="table" href="/progress">Table View</a>
                 <div class="icon">
-                    <span class="material-symbols-rounded">chevron_left</span>
-                    <span class="material-symbols-rounded">chevron_right</span>
+                    <span id="prev" class="material-symbols-rounded">chevron_left</span>
+                    <span id="next" class="material-symbols-rounded">chevron_right</span>
                 </div>
             </header>
             <div class="calendar">
@@ -138,43 +30,115 @@ header .icon span:last-child {
                     <li>Sa</li>
                 </ul>
                 <ul class="days">
-                    <li class="inactive">30</li>
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
-                    <li>5</li>
-                    <li>6</li>
-                    <li>7</li>
-                    <li>8</li>
-                    <li>9</li>
-                    <li>10</li>
-                    <li>11</li>
-                    <li>12</li>
-                    <li>13</li>
-                    <li>14</li>
-                    <li>15</li>
-                    <li>16</li>
-                    <li>17</li>
-                    <li>18</li>
-                    <li>19</li>
-                    <li>20</li>
-                    <li>21</li>
-                    <li>22</li>
-                    <li>23</li>
-                    <li>24</li>
-                    <li>25</li>
-                    <li>26</li>
-                    <li>27</li>
-                    <li>28</li>
-                    <li>29</li>
-                    <li>30</li>
-                    <li>31</li>
-                    <li class="inactive">1</li>
-                    <li class="inactive">2</li>
-                    <li class="inactive">3</li>
                 </ul>
             </div>
         </div>
+        <div id="progress-report-details">
+        </div>
     </div>
+    <script>
+        const currentDate = document.querySelector(".current-date"),
+            days = document.querySelector(".days"),
+            dateList = document.querySelectorAll(".days li"),
+            next = document.querySelectorAll(".icon span");
+        // tracks current date, year and month
+        let date = new Date(),
+            currentYear = date.getFullYear(),
+            currentMonth = date.getMonth();
+
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+            "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
+
+        // formats an id for the date of the current list item
+        // converts month and day into numbers
+        const createDateID = (date) => {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            // example if day is may 3rd, returns "2023-05-03"
+            return `${year}-${month}-${day}`
+        };
+
+        const handleDateClick = (element) => {
+            const dateID = element.id;
+            const progressReports = JSON.parse('<%- JSON.stringify(progressReports) %>');
+            const matchingProgress = progressReports.filter((report) => report.date === dateID);
+
+            details = document.getElementById("progress-report-details");
+            const calendarDay = element.closest("li");
+
+            if (matchingProgress.length > 0) {
+                let html = '';
+                
+
+                matchingProgress.forEach((progressReport) => {
+                    html += `
+                    <p>${progressReport.date}</p>
+                    <p>${progressReport.type}</p>
+                    <p>${progressReport.details}</p>
+                    <hr>`;
+                });
+
+                details.innerHTML = html;
+                details.classList.add("progress-background");
+            } else {
+                details.innerHTML = '';
+                details.classList.remove("progress-background");
+            }
+        };
+        const createCalendar = () => {
+            // gets first day of month
+            let firstDayofMonth = new Date(currentYear, currentMonth, 1).getDay(),
+                // gets last day of month
+                lastDateofMonth = new Date(currentYear, currentMonth + 1, 0).getDate(),
+                // gets days from last month
+                lastDateofLastMonth = new Date(currentYear, currentMonth, 0).getDate(),
+                lastDaysofMonth = new Date(currentYear, currentMonth, lastDateofMonth).getDay();
+            let liTag = "";
+
+            // loop for going through days from last month giving them an inactive class
+            for (let i = firstDayofMonth; i > 0; i--) {
+                // pass the current date into createDateID to make id 
+                const date = new Date(currentYear, currentMonth - 1, lastDateofLastMonth - i + 1);
+                const dateID = createDateID(date);
+                liTag += `<li id="${dateID}" onclick="handleDateClick(this)" class="inactive">${lastDateofLastMonth - i + 1}</li>`
+            }
+
+            // for loop to make list element for each date
+            for (let i = 1; i <= lastDateofMonth; i++) {
+                // pass the current date into createDateID to make id 
+                const date = new Date(currentYear, currentMonth, i);
+                const dateID = createDateID(date);
+                liTag += `<li id="${dateID}" onclick="handleDateClick(this)">${i}</li>`;
+            }
+
+            for (let i = lastDaysofMonth; i < 6; i++) {
+                const date = new Date(currentYear, currentMonth + 1, i - lastDaysofMonth + 1);
+                const dateID = createDateID(date);
+                liTag += `<li id="${dateID}" onclick="handleDateClick(this)" class="inactive">${i - lastDaysofMonth + 1}</li>`
+            }
+            currentDate.innerText = `${months[currentMonth]} ${currentYear}`;
+            days.innerHTML = liTag
+        }
+
+        createCalendar();
+
+        // adds event listener to icons
+        next.forEach(icon => {
+            icon.addEventListener("click", () => {
+                currentMonth = icon.id === "prev" ? currentMonth - 1 : currentMonth + 1;
+
+                // if the index is lower then 0 (january) or higher than 11(december) change the year
+                if (currentMonth < 0 || currentMonth > 11) {
+                    date = new Date(currentYear, currentMonth);
+                    currentYear = date.getFullYear();
+                    currentMonth = date.getMonth();
+                } else {
+                    date = new Date();
+                }
+
+                createCalendar();
+            })
+        })
+    </script>
 </body>

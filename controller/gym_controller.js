@@ -53,8 +53,9 @@ let gymController = {
     if (!req.user) {
       res.render("login");
     } else {
+      const currentDate = new Date().toISOString().slice(0, 10);
       const exercises = database["exercises"];
-      res.render("gym/create", { exercises });
+      res.render("gym/create", { exercises, currentDate });
     }
   },
 
@@ -89,7 +90,8 @@ let gymController = {
   },
 
   calendar: (req, res) => {
-    res.render("gym/calendar");
+    const progressReports = req.user.progress;
+    res.render("gym/calendar", { progressReports });
   },
   selectWorkout: (req, res) => {
     let selectedWorkout = undefined;
