@@ -1,5 +1,52 @@
-div{
-    background-image: url("/public/images/loginpage.png");
-    height: 100px;
+@keyframes slide {
+    0% {
+      background-image: url("images/register1.png");
+    }
+    33% {
+        background-image: url("images/register2.png");
+      }
+    66% {
+      background-image: url("images/register3.png");
+    }
+    100% {
+      background-image: url("images/register4.png");
+    }
+  }
+  
+  section {
+    position: fixed;
+    top: 0;
+    left: 0;    
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
     background-size: cover;
-}
+    background-repeat: no-repeat;
+    animation: slide 8s infinite;
+  }
+  
+  section .row.mt-5{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 20px;
+    width: 70%;    
+  }
+  form div label {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: white;
+  }
+  label{
+    color: white;
+  }
