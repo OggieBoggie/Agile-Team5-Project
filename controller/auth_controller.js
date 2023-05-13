@@ -40,6 +40,7 @@ let authController = {
         password: req.body.password,
         gymAccount: req.body.gymAccount,
         gymName: req.body.gymName,
+        address: req.body.address,
         equipment: []
       };
       userDatabase["gymAccounts"].push(gymAccount)
