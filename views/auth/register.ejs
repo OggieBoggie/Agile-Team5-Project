@@ -24,14 +24,21 @@
       <label for="exampleInputPassword1">Gym Name</label>
       <input name="gymName" type="name" class="form-control" id="exampleInputPassword1" placeholder="Name">
     </div>
+    <div class="form-group gym-address" style="display: none;">
+      <label for="exampleInputPassword1">Address</label>
+      <input name="address" type="name" class="form-control" id="exampleInputPassword1" placeholder="Name">
+    </div>
     <script>
       const myCheckbox = document.getElementById('myCheckbox');
-      const formGroup = document.querySelector('.gym-name');
+      const gymName = document.querySelector('.gym-name');
+      const gymAddress = document.querySelector('.gym-address');
       myCheckbox.addEventListener('change', () => {
         if (myCheckbox.checked) {
-          formGroup.style.display = 'block';
+          gymName.style.display = 'block';
+          gymAddress.style.display = 'block';
         } else {
-          formGroup.style.display = 'none';
+          gymName.style.display = 'none';
+          gymAddress.style.display = 'none';
         }
       });
     </script>
