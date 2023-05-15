@@ -20,12 +20,6 @@
     <hr class="mb-4"/>
   <div class="d-flex flex-column">
         <div class="d-flex align-items-start flex-row bd-highlight ml-4">
-            <!-- <a type="button" class="btn btn-outline-secondary ml-2 mb-1">Upper push</a>
-            <a type="button" class="btn btn-outline-secondary ml-2 mb-1">Upper pull</a>
-            <a type="button" class="btn btn-outline-secondary ml-2 mb-1">Lower push</a>
-            <a type="button" class="btn btn-outline-secondary ml-2 mb-1">Lower pull</a>
-            <a type="button" class="btn btn-outline-secondary ml-2 mb-1">Cardio #1</a>
-            <a type="button" class="btn btn-outline-secondary ml-2 mb-1">Cardio #1</a> -->
             <% for (let w of workouts) { %>
                 <a type="button" class="btn btn-outline-secondary ml-2 mb-3" href=<%= "/selectworkout/" + w.id %>><%= w["name"] %></a>
             <% } %>
@@ -42,6 +36,7 @@
                 <p class="card-text">Muscle Groups: <% for (let m of e.muscleGroups) { %><%= m %><% } %></p>
               </div> -->
               <div class="card border-dark bg-light" style="width: 18rem;">
+                <iframe class="card-img-top" src="<%= e.video %>"></iframe>
                 <div class="card-header"><b><%= e.exercise %></b></div>
                 <div class="card-body text-dark">
                   <p class="card-text"><%= e.description %></p>
