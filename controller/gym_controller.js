@@ -224,7 +224,6 @@ let gymController = {
 
     req.user.gyms[gymIndex].equipment[equipmentIndex].name = req.body.name;
     req.user.gyms[gymIndex].equipment[equipmentIndex].stock = req.body.stock;
-    console.log(req.database.gymAccounts)
     req.database.gymAccounts[userIndex].gyms[gymIndex].equipment[equipmentIndex].name = req.body.name;
     req.database.gymAccounts[userIndex].gyms[gymIndex].equipment[equipmentIndex].stock = req.body.stock;
 
