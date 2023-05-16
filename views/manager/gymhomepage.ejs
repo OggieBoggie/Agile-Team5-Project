@@ -2,14 +2,16 @@
   <h1>Gyms</h1>
 </header>
 <a class="btn btn-outline-secondary" href=<%= "/addgym" %>>Add Gym</a>
-<ul class="list-group">
-<% gyms.forEach(function (g) { %>
-  <li class="list-group-item">
-    <strong><%= g.name %>: </strong>
-    <%= g.address %>
-    <a class="pull-right" href=<%= "/gym/edit/" + g.id %>>|   Edit   |</a>
-    <a class="pull-right" href=<%= "/gym/delete/" + g.id %>>Delete    |</a>
-    <a class="pull-right" href=<%= "/gym/" + g.id %>>Manage Equipment    |</a>
-  </li>
-<% }) %>
-</ul>
+<section class="d-flex flex-row">
+  <% gyms.forEach(function (g) { %>
+    <div class="card border-dark bg-light" style="width: 18rem;">
+        <div class="card-header"><b><%= g.name %></b></div>
+        <div class="card-body text-dark">
+          <p class="card-text"><%= g.address %></p>
+          <p><a class="pull-right btn btn-outline-secondary" href=<%= "/gym/edit/" + g.id %>>Edit</a></p>
+          <p><a class="pull-right btn btn-outline-secondary" href=<%= "/gym/delete/" + g.id %>>Delete</a></p>
+          <p><a class="pull-right btn btn-outline-secondary" href=<%= "/gym/" + g.id %>>Manage Equipment</a></p>
+        </div>
+        </div>
+  <% }) %>
+</section>
