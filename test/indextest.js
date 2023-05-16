@@ -1,6 +1,13 @@
 // const request = require('supertest');
-// const app = require('../index');
-// const { describe } = require('@jest/globals');
+// const {app, server} = require('../index');
+// const { describe, afterAll } = require('@jest/globals');
+
+
+// afterAll((done) => {
+//   server.close(() => {
+//     done();
+//   });
+// });
 
 // describe('Simple Endpoint Tests', () => {
 //     describe('Redirect When not authenticated', () => {
