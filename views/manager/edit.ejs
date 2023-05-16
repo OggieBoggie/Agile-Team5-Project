@@ -1,6 +1,6 @@
 <div class="container">
   <h1 class="page-header">Edit</h1>
-  <form action=<%= "/equipment/" + equipment.id %> method="POST">
+  <form action="/gym/<%= gymID %>/equipment/<%= equipment.id %>" method="POST">
 
     <div class='form-group'>
       <label for="title">Name</label>
@@ -19,5 +19,5 @@
     </div>
     <button type="submit" class="btn btn-outline-secondary">Submit</button>
   </form>
-  <a href="/equipment" class="btn btn-outline-secondary">Back</a>
+  <a href="/gym/<%= gymID %>" class="btn btn-outline-secondary">Back</a>
 </div>

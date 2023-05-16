@@ -1,5 +1,5 @@
 <div class="container">
-  <form action="/addequipment" method="POST">
+  <form action="/gym/<%= gym.id %>/addequipment" method="POST">
     
     <div class="form-group">
       <label for="title">Name</label>
@@ -19,5 +19,5 @@
     </div>
     <button type="submit" class="btn btn-outline-secondary">Submit</button>
   </form>
-  <a href="/equipment" class="btn btn-outline-secondary">Back</a>
+  <a href="/gym/<%= gym.id %>" class="btn btn-outline-secondary">Back</a>
 </div>
