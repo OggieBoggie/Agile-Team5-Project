@@ -5,10 +5,11 @@
     <div class='form-group'>
       <label for="title">Name</label>
       <select class="form-control" id="titleInput" name="name" required>
-        <option value="<%= equipment.name %>" selected disabled><%= equipment.name %></option>
-        <% equipmentArray.forEach(equipment => { %>
-          <option value="<%= equipment %>"><%= equipment %></option>
-        <% }) %>
+        <option value="<%= equipment.name %>"><%= equipment.name %></option>
+        <% for (const e of equipmentArray) { %>
+          <% if (e != equipment.name) { %>
+          <option value="<%= e %>"><%= e %></option>
+        <% } } %>
         </select>
     </div>
 
@@ -16,6 +17,17 @@
     <div class="form-group">
       <label for="title">Stock</label>
       <input type="text" name="stock" class="form-control" id="titleInput" value="<%= equipment.stock %>">
+    </div>
+
+    <div class="form-group">
+      <label for="title">Condition</label>
+      <select class="form-control" id="titleInput" name="condition" required>
+        <option value="<%= equipment.condition %>"><%= equipment.condition %></option>
+        <% for (const c of conditions) { %>
+          <% if (c != equipment.condition) { %>
+          <option value="<%= c %>"><%= c %></option>
+        <% } } %>
+      </select>
     </div>
     <button type="submit" class="btn btn-outline-secondary">Submit</button>
   </form>
