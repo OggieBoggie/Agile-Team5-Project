@@ -68,5 +68,11 @@ app.post("/register", sessionUserDatabase,authController.registerSubmit);
 app.post("/login", sessionUserDatabase,authController.loginSubmit);
 app.get("/logout", sessionUserDatabase,authController.logout);
 
+app.listen(3000, function () {
+    console.log(
+      "Server running. Visit: localhost:3000/home in your browser 🚀"
+      );
+    });
+
+
 module.exports = app;
-    
