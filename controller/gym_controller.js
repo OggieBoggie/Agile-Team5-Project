@@ -19,9 +19,9 @@ let gymController = {
   home: (req, res) => {
     request = req;
     console.log(req.user);
-    gym = req.user;
+    gyms = req.user.gyms;
     if (req.user.gymAccount) {
-      res.render("manager/gymhomepage"), { gym };
+      res.render("manager/gymhomepage"), { gyms };
     } else {
       res.render("gym/homepage"), { request };
     }
@@ -39,7 +39,6 @@ let gymController = {
         randomWorkoutList.push(e);
       }
     }
-    console.log(randomWorkoutList);
     res.render("gym/workoutpage", { randomWorkoutList });
   },
   progress: (req, res) => {
@@ -116,110 +115,179 @@ let gymController = {
       selectedWorkout,
     });
   },
-  equipment: (req, res) => {
-    equipment = req.user.equipment;
-    console.log(req.user.equipment);
-    res.render("manager/equipment"), { equipment };
+  viewAddGym: (req, res) => {
+    res.render("manager/addgym");
   },
-  viewEditEquipment: (req, res) => {
-    let equipmentID = req.params.id;
-    let equipment = req.user.equipment.find(function (equipment) {
-      return equipment.id == equipmentID;
+  addGym: (req, res) => {
+    let newGym = {
+      id: req.user.gyms.length + 1,
+      name: req.body.name,
+      address: req.body.address,
+      equipment: [],
+    };
+    let gymAc = req.database.gymAccounts.find((gymAc) => {
+      return gymAc.id === req.user.id;
     });
-    let equipmentArray = []
-    for (let ex of database.exercises) {
-      for (let e of ex.equipment){
-      if (equipmentArray.includes(e)) {
-      } else {
-        equipmentArray.push(e)
+    req.user.gyms.push(newGym);
+    gymAc.gyms.push(newGym);
+    let dataString = JSON.stringify(req.database);
+    fs.writeFileSync("../userDatabase.json", dataString);
+    res.redirect("/home");
+  },
+  deleteGym: (req, res) => {
+    let gymID = Number(req.params.id);
+
+    let gymToDelete = req.user.gyms.find(function (g) {
+      return g.id == gymID;
+    });
+    let gymIndex = req.user.gyms.indexOf(gymToDelete);
+    req.user.gyms.splice(gymIndex, 1);
+
+    for (let gymAc of req.database.gymAccounts) {
+      if (gymAc.id === req.user.id) {
+        gymAc.gyms.splice(gymIndex, 1);
       }
     }
+    for (let gymAc of req.database.gymAccounts) {
+      if (gymAc.id === req.user.id) {
+        for (let g in gymAc.gyms) {
+          gymAc.gyms[g].id = parseInt(g) + 1;
+        }
+      }
     }
-    res.render("manager/edit", { equipment, equipmentArray });
-  },
-  editEquipment: (req, res) => {
-    let equipmentID = Number(req.params.id)
 
-    let editEquip = {
-      id : equipmentID,
-      name: req.body.name,
-      stock: req.body.stock
-    }
- 
-    for (let e of req.user.equipment) {
-      if (e.id === equipmentID) {
-        e.name = req.body.name
-        e.stock = req.body.stock
+    let dataString = JSON.stringify(req.database);
+    fs.writeFileSync("../userDatabase.json", dataString);
+    res.redirect("/home");
+  },
+  viewEditGym: (req, res) => {
+    let gymID = req.params.id;
+    let gym = req.user.gyms.find(function (gym) {
+      return gym.id == gymID;
+    });
+    res.render("manager/editgym", { gym });
+  },
+  editGym: (req, res) => {
+    let gymID = Number(req.params.id);
+
+    for (let g of req.user.gyms) {
+      if (g.id === gymID) {
+        g.name = req.body.name;
+        g.address = req.body.address;
       }
     }
 
     for (let gymUser of req.database.gymAccounts) {
       if (req.user.id === gymUser.id) {
-        for (let e of gymUser.equipment) {
-          if (e.id === equipmentID) {
-            e.name = req.body.name
-            e.stock = req.body.stock
+        for (let g of gymUser.gyms) {
+          if (g.id === gymID) {
+            g.name = req.body.name;
+            g.address = req.body.address;
           }
         }
       }
     }
 
-    let dataString = JSON.stringify(req.database)
-    fs.writeFileSync('../userDatabase.json',dataString)
-    res.redirect('/equipment')
+    let dataString = JSON.stringify(req.database);
+    fs.writeFileSync("../userDatabase.json", dataString);
+    res.redirect("/home");
   },
-  deleteEquipment: (req,res) =>{
-    let equipmentID = Number(req.params.id);
+  manageGym: (req, res) => {
+    let gymID = Number(req.params.id);
 
-    let equipmentToDelete = req.user.equipment.find(function (e) {
-      return e.id == equipmentID;
+    let gym = req.user.gyms.find(function (gym) {
+      return gym.id == gymID;
     });
-    let equipmentIndex = req.user.equipment.indexOf(equipmentToDelete)
-    req.user.equipment.splice(equipmentIndex, 1);
-
-    for (let gymAc of req.database.gymAccounts) {
-      if (gymAc.id === req.user.id) {
-        gymAc.equipment.splice(equipmentIndex, 1)
-      }
-    }
-    for (let gymAc of req.database.gymAccounts) {
-      if (gymAc.id === req.user.id) {
-        for (let e in gymAc.equipment) {
-          gymAc.equipment[e].id = parseInt(e) + 1
+    res.render("manager/equipment", { gym });
+  },
+  viewEditEquipment: (req, res) => {
+    let gymIndex = Number(req.params.gid) - 1;
+    let equipmentIndex = Number(req.params.eid) - 1;
+    let equipment = req.user.gyms[gymIndex].equipment[equipmentIndex]
+    let equipmentArray = [];
+    for (let ex of database.exercises) {
+      for (let e of ex.equipment) {
+        if (equipmentArray.includes(e)) {
+        } else {
+          equipmentArray.push(e);
         }
       }
     }
-  
-
-    let dataString = JSON.stringify(req.database)
-    fs.writeFileSync('../userDatabase.json',dataString)
-    res.redirect("/equipment");
+    const gymID = Number(req.params.gid)
+    res.render("manager/edit", { gymID ,equipment, equipmentArray });
   },
-  viewAddEquipment: (req, res) => {
-    let equipmentArray = []
-    for (let ex of database.exercises) {
-      for (let e of ex.equipment){
-      if (equipmentArray.includes(e)) {
-      } else {
-        equipmentArray.push(e)
+  editEquipment: (req, res) => {
+    console.log(req.user.id)
+    const userIndex = Number(req.user.id.substring(1)) - 1;
+    const gymIndex = Number(req.params.gid) - 1;
+    const equipmentIndex = Number(req.params.eid) - 1;
+
+    req.user.gyms[gymIndex].equipment[equipmentIndex].name = req.body.name;
+    req.user.gyms[gymIndex].equipment[equipmentIndex].stock = req.body.stock;
+    console.log(req.database.gymAccounts)
+    req.database.gymAccounts[userIndex].gyms[gymIndex].equipment[equipmentIndex].name = req.body.name;
+    req.database.gymAccounts[userIndex].gyms[gymIndex].equipment[equipmentIndex].stock = req.body.stock;
+
+    let dataString = JSON.stringify(req.database);
+    fs.writeFileSync("../userDatabase.json", dataString);
+    res.redirect("/gym/" + req.params.gid);
+  },
+  deleteEquipment: (req, res) => {
+    let gymIndex = Number(req.params.gid) - 1;
+    let equipmentIndex = Number(req.params.eid) - 1;
+    req.user.gyms[gymIndex].equipment.splice(equipmentIndex, 1);
+
+    for (let gymAc of req.database.gymAccounts) {
+      if (gymAc.id === req.user.id) {
+        gymAc.gyms[gymIndex].equipment.splice(equipmentIndex, 1);
       }
     }
+    for (let gymAc of req.database.gymAccounts) {
+      if (gymAc.id === req.user.id) {
+        for (let e in gymAc.gyms[gymIndex].equipment) {
+          gymAc.gyms[gymIndex].equipment[e].id = parseInt(e) + 1;
+        }
+      }
     }
-    console.log(equipmentArray)
-    res.render("manager/add", { equipmentArray });
+
+    let dataString = JSON.stringify(req.database);
+    fs.writeFileSync("../userDatabase.json", dataString);
+    res.redirect("/gym/" + req.params.gid);
+  },
+  viewAddEquipment: (req, res) => {
+    let gymID = Number(req.params.id);
+
+    let gym = req.user.gyms.find(function (gym) {
+      return gym.id == gymID;
+    });
+    
+    let equipmentArray = [];
+    for (let ex of database.exercises) {
+      for (let e of ex.equipment) {
+        if (equipmentArray.includes(e)) {
+        } else {
+          equipmentArray.push(e);
+        }
+      }
+    }
+    res.render("manager/add", { gym, equipmentArray });
   },
   addEquipment: (req, res) => {
+    let gymIndex = Number(req.params.id) - 1;
+
     let newEquipment = {
-      id: req.user.equipment.length + 1,
+      id: req.user.gyms[gymIndex].equipment.length + 1,
       name: req.body.name,
-      stock: req.body.stock
-    }
-    let gymAc = req.database.gymAccounts.find(gymAc => {return gymAc.id === req.user.id})
-    req.user.equipment.push(newEquipment)
-    gymAc.equipment.push(newEquipment)
-    let dataString = JSON.stringify(req.database)
-    fs.writeFileSync('../userDatabase.json',dataString)
-    res.redirect('/equipment')
+      stock: req.body.stock,
+    };
+    let gymAc = req.database.gymAccounts.find((gymAc) => {
+      return gymAc.id === req.user.id;
+    });
+    req.user.gyms[gymIndex].equipment.push(newEquipment);
+    gymAc.gyms[gymIndex].equipment.push(newEquipment);
+    let dataString = JSON.stringify(req.database);
+    fs.writeFileSync("../userDatabase.json", dataString);
+    res.redirect("/gym/" + req.params.id);
   },
 };
 

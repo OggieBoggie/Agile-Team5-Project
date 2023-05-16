@@ -1,10 +1,15 @@
 <header class="p-3 mb-2 bg-dark text-white">
-  <h1><%= gym.gymName %></h1>
-  <p><%= gym.address %></p>
+  <h1>Gyms</h1>
 </header>
-<div class="card border-dark mb-31" style="width: 18rem;">
-  <div class="card-header"><b>Equipment</b></div>
-  <div class="card-body">
-    <p class="card-text">Manage equipment.</p>
-    <a href="/equipment" class="btn btn-outline-secondary btn-lg">Manage</a>
-  </div>
+<a class="btn btn-outline-secondary" href=<%= "/addgym" %>>Add Gym</a>
+<ul class="list-group">
+<% gyms.forEach(function (g) { %>
+  <li class="list-group-item">
+    <strong><%= g.name %>: </strong>
+    <%= g.address %>
+    <a class="pull-right" href=<%= "/gym/edit/" + g.id %>>|   Edit   |</a>
+    <a class="pull-right" href=<%= "/gym/delete/" + g.id %>>Delete    |</a>
+    <a class="pull-right" href=<%= "/gym/" + g.id %>>Manage Equipment    |</a>
+  </li>
+<% }) %>
+</ul>

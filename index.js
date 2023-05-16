@@ -49,17 +49,21 @@ app.get("/selectworkout",ensureAuthenticated, gymController.selectWorkout)
 app.get("/selectworkout/:id",ensureAuthenticated, gymController.displayWorkout)
 
 // Manager Routes
-app.get("/equipment", gymController.equipment)
-app.get('/equipment/delete/:id', sessionUserDatabase,gymController.deleteEquipment)
-app.get("/equipment/:id", gymController.viewEditEquipment)
-app.get("/addequipment", gymController.viewAddEquipment)
-app.post("/equipment/:id",sessionUserDatabase, gymController.editEquipment)
-app.post("/addequipment", sessionUserDatabase, gymController.addEquipment)
-
+app.get("/addgym", ensureAuthenticated,sessionUserDatabase, gymController.viewAddGym)
+app.post("/addgym", ensureAuthenticated,sessionUserDatabase, gymController.addGym)
+app.get("/gym/edit/:id", ensureAuthenticated,gymController.viewEditGym)
+app.post("/gym/edit/:id", ensureAuthenticated,sessionUserDatabase, gymController.editGym)
+app.get('/gym/delete/:id', ensureAuthenticated,sessionUserDatabase,gymController.deleteGym)
+app.get("/gym/:id", ensureAuthenticated,sessionUserDatabase,gymController.manageGym)
+app.get("/gym/:id/addequipment", ensureAuthenticated,gymController.viewAddEquipment)
+app.get('/gym/:gid/equipment/delete/:eid', ensureAuthenticated,sessionUserDatabase,gymController.deleteEquipment)
+app.get("/gym/:gid/equipment/:eid", ensureAuthenticated,gymController.viewEditEquipment)
+app.post("/gym/:gid/equipment/:eid",ensureAuthenticated,sessionUserDatabase, gymController.editEquipment)
+app.post("/gym/:id/addequipment", ensureAuthenticated,sessionUserDatabase, gymController.addEquipment)
 
 // Auth Routes
-app.get("/register",sessionUserDatabase, authController.register);
-app.get("/login", sessionUserDatabase ,forwardAuthenticated, authController.login);
+app.get("/register",forwardAuthenticated,sessionUserDatabase, authController.register);
+app.get("/login", forwardAuthenticated,sessionUserDatabase , authController.login);
 app.post("/register", sessionUserDatabase,authController.registerSubmit);
 app.post("/login", sessionUserDatabase,authController.loginSubmit);
 app.get("/logout", sessionUserDatabase,authController.logout);
