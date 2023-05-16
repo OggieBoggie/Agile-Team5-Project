@@ -213,19 +213,21 @@ let gymController = {
         }
       }
     }
+    const conditions = ["Good", "Moderate", "Bad"]
     const gymID = Number(req.params.gid)
-    res.render("manager/edit", { gymID ,equipment, equipmentArray });
+    res.render("manager/edit", { gymID ,equipment, equipmentArray, conditions });
   },
   editEquipment: (req, res) => {
-    console.log(req.user.id)
     const userIndex = Number(req.user.id.substring(1)) - 1;
     const gymIndex = Number(req.params.gid) - 1;
     const equipmentIndex = Number(req.params.eid) - 1;
 
     req.user.gyms[gymIndex].equipment[equipmentIndex].name = req.body.name;
     req.user.gyms[gymIndex].equipment[equipmentIndex].stock = req.body.stock;
+    req.user.gyms[gymIndex].equipment[equipmentIndex].condition = req.body.condition;
     req.database.gymAccounts[userIndex].gyms[gymIndex].equipment[equipmentIndex].name = req.body.name;
     req.database.gymAccounts[userIndex].gyms[gymIndex].equipment[equipmentIndex].stock = req.body.stock;
+    req.database.gymAccounts[userIndex].gyms[gymIndex].equipment[equipmentIndex].condition = req.body.condition;
 
     let dataString = JSON.stringify(req.database);
     fs.writeFileSync("../userDatabase.json", dataString);
@@ -278,6 +280,7 @@ let gymController = {
       id: req.user.gyms[gymIndex].equipment.length + 1,
       name: req.body.name,
       stock: req.body.stock,
+      condition: req.body.condition
     };
     let gymAc = req.database.gymAccounts.find((gymAc) => {
       return gymAc.id === req.user.id;
