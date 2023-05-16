@@ -50,7 +50,7 @@ let gymController = {
   },
   new: (req, res) => {
     if (!req.user) {
-      res.render("login");
+      res.status(401).render("login");
     } else {
       const currentDate = new Date().toISOString().slice(0, 10);
       const exercises = database["exercises"];
