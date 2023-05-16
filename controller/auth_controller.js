@@ -39,9 +39,7 @@ let authController = {
         email: req.body.email,
         password: req.body.password,
         gymAccount: req.body.gymAccount,
-        gymName: req.body.gymName,
-        address: req.body.address,
-        equipment: []
+        gyms: []
       };
       userDatabase["gymAccounts"].push(gymAccount)
       req.database.gymAccounts.push(gymAccount)
