@@ -1,52 +1,60 @@
 @keyframes slide {
-    0% {
-      background-image: url("images/1.png");
-    }
-    33% {
-        background-image: url("images/2.png");
-      }
-    66% {
-      background-image: url("images/3.png");
-    }
-    100% {
-      background-image: url("images/4.png");
-    }
+  0% {
+    background-image: url("images/login1.jpg");
   }
-  
-  section {
-    position: fixed;
-    top: 0;
-    left: 0;    
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    animation: slide 8s infinite;
+  33% {
+    background-image: url("images/login3.jpg");
   }
-  
-  section .row.mt-5{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    padding: 20px;
-    width: 70%;    
+  66% {
+    background-image: url("images/login4.jpg");
   }
-  form div label {
-    font-size: 18px;
-    font-weight: bold;
+  100% {
+    background-image: url("images/login5.jpg  ");
   }
-  h2{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    color: white;
-  }
-  label{
-    color: white;
-  }
+}
+
+section {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-position: center;
+  background-size:cover;
+  background-repeat: no-repeat;
+  animation: slide 12s infinite;
+}
+.row.mt-5{
+  width: 75%;
+  height: 90%;
+  background-image: url("images/loginbox.jpg");
+  background-size: cover;
+  border-radius: 30px;
+  box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.75);
+  margin: 30px;
+}
+.col-md-6.m-auto{
+  margin-top: 100px;
+  width: 100%;
+  height: 90%;
+  max-width: 100%;
+}
+
+form div label {
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+}
+
+h1,h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: black;
+}
+input{
+  width: 30px;
+}
