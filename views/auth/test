@@ -1,0 +1,135 @@
+<link rel="stylesheet" href="register.css" />
+<div class="container">
+  <div class="btn-group">
+    <button id="gymAccountBtn" class="btn active">Gym Account</button>
+    <button id="gymOwnerAccountBtn" class="btn">Gym Owner Account</button>
+  </div>
+  <form action="/register" method="POST">
+    <div class="form-group">
+      <label for="exampleInputPassword1">Name</label>
+      <input name="name" type="name" class="form-control" id="exampleInputPassword1" placeholder="Name">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    <div class="form-group" id="gymNameGroup">
+      <label for="exampleInputPassword1">Gym Name</label>
+      <input name="gymName" type="name" class="form-control" id="exampleInputPassword1" placeholder="Gym Name">
+    </div>
+    <div class="form-group" id="addressGroup">
+      <label for="exampleInputPassword1">Address</label>
+      <input name="address" type="text" class="form-control" id="exampleInputPassword1" placeholder="Address">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+<script>
+  const gymAccountBtn = document.getElementById('gymAccountBtn');
+  const gymOwnerAccountBtn = document.getElementById('gymOwnerAccountBtn');
+  const gymNameGroup = document.getElementById('gymNameGroup');
+  const addressGroup = document.getElementById('addressGroup');
+
+  gymAccountBtn.addEventListener('click', () => {
+    gymAccountBtn.classList.add('active');
+    gymOwnerAccountBtn.classList.remove('active');
+    gymNameGroup.style.display = 'block';
+    addressGroup.style.display = 'block';
+  });
+
+  gymOwnerAccountBtn.addEventListener('click', () => {
+    gymOwnerAccountBtn.classList.add('active');
+    gymAccountBtn.classList.remove('active');
+    gymNameGroup.style.display = 'none';
+    addressGroup.style.display = 'none';
+  });
+</script>
+
+
+
+.container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 20px;
+    color: black;
+  }
+  
+  .container form .form-group {
+    margin-bottom: 20px;
+    width: 300px;
+  }
+  
+  .container form label {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .container form input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .container form .form-check-input {
+    margin-right: 100px;
+  }
+  
+  .container form .form-check-label {
+    font-size: 16px;
+  }
+  
+  .container form button {
+    width: 150px;
+    padding: 8px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+  }
+  
+  .container form button:hover {
+    background-color: #45a049;
+  }
+  
+  .container form .form-text {
+    font-size: 14px;
+    color: #777;
+  }
+  
+  /* Custom Styling */
+  .container form .btn-group {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .container form .btn-group button {
+    margin: 0 10px;
+  }
+  
+  .container form .form-group.gym-name,
+  .container form .form-group.gym-address {
+    display: none;
+  }
+  
+  .container form .form-group.show-gym .gym-name,
+  .container form .form-group.show-gym .gym-address {
+    display: block;
+  }
+  
