@@ -15,7 +15,7 @@ body {
   position: relative;
   height: 80%;
   width: 30%;
-  background-image: url("images/loginbox.jpg");
+  background-color: white;
   top: 10%;
   padding-top: 10px;
   border-radius: 30px;
