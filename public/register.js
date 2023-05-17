@@ -1,14 +1,12 @@
 const gymAccountButton = document.getElementById('gymAccountButton');
-const gymOwnerAccountButton = document.getElementById('userAccountButton');
-const gymInfo = document.querySelector('.gym-info');
-const gymAddress = document.querySelector('.gym-address');
+const userAccountButton = document.getElementById('userAccountButton');
 
 gymAccountButton.addEventListener('click', () => {
-  gymInfo.style.display = 'block';
-  gymAddress.style.display = 'block';
+  gymAccountButton.classList.add('active');
+  userAccountButton.classList.remove('active');
 });
 
-gymOwnerAccountButton.addEventListener('click', () => {
-  gymInfo.style.display = 'none';
-  gymAddress.style.display = 'none';
+userAccountButton.addEventListener('click', () => {
+  userAccountButton.classList.add('active');
+  gymAccountButton.classList.remove('active');
 });

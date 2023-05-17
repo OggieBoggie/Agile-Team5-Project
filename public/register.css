@@ -52,12 +52,11 @@ body {
   font-weight: bold;
 
 }
-
-.gym-address {
-  display: none;
-}
 .small {
   font-size: 12px;
   font-weight: bold;
   color: red;
+}
+.active{
+  background-color: grey;
 }
