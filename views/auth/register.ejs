@@ -1,5 +1,9 @@
 <link rel="stylesheet" href="register.css" />
 <div class="container">
+  <div class="button-group">
+    <button id="gymAccountButton">Gym Account</button>
+    <button id="userAccountButton">User Account</button>
+  </div>
   <form action="/register" method="POST">
     <div class="form-group">
       <label for="exampleInputPassword1">Name</label>
@@ -8,7 +12,7 @@
     <div class="form-group">
       <label for="exampleInputEmail1">Email address</label>
       <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      <small class="small">We'll never share your email with anyone else.</small>
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Password</label>
@@ -20,28 +24,9 @@
         Gym Account
       </label>
     </div>
-    <!-- <div class="form-group gym-name" style="display: none;">
-      <label for="exampleInputPassword1">Gym Name</label>
-      <input name="gymName" type="name" class="form-control" id="exampleInputPassword1" placeholder="Name">
-    </div>
-    <div class="form-group gym-address" style="display: none;">
-      <label for="exampleInputPassword1">Address</label>
-      <input name="address" type="name" class="form-control" id="exampleInputPassword1" placeholder="Name">
-    </div>
-    <script>
-      const myCheckbox = document.getElementById('myCheckbox');
-      const gymName = document.querySelector('.gym-name');
-      const gymAddress = document.querySelector('.gym-address');
-      myCheckbox.addEventListener('change', () => {
-        if (myCheckbox.checked) {
-          gymName.style.display = 'block';
-          gymAddress.style.display = 'block';
-        } else {
-          gymName.style.display = 'none';
-          gymAddress.style.display = 'none';
-        }
-      });
-    </script> -->
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary btn-block">Register</button>
   </form>
 </div>
+
+<script src="register.js"></script>
+  
