@@ -3,30 +3,34 @@
   <h1 class="display-1">Workout of the Day</h1>
 </header>
 
+<div class="card m-4">
+  <div class="card-header"><b>
+    Workout Overview, Warm-Up, & Cool-Down</b>
+  </div>
+  <div class="card-body">
+    <ol class="card-text">
+      <li class="card-text">Warm-Up: 5-10 minutes of light cardio (such as jogging or jumping jacks) to get your heart rate up and warm up your muscles.</li>
+      <li class="card-text">Complete each exercise in a circuit-style format for the prescribed sets and reps (ie. complete exercise 1, 2, 3...etc. then back to the beginning)</li>
+      <li class="card-text">Cool-Down: 5-10 minutes of light cardio (such as walking or cycling) to gradually lower your heart rate.
+        Stretching for all major muscle groups, holding each stretch for 20-30 seconds.</li>
+      <li class="card-text"><b><i>Remember to use a weight that is comfortable for you, focus on proper form, and take breaks as needed.</i></b></li>
+    </ol>
+  </div>
+</div>
+
 <section class="d-flex flex-row">
     <% for (let e of randomWorkoutList) { %>
-      <div class="card border-dark bg-light" style="width: 21rem;">
+      <div class="card border-dark bg-light m-2" style="width: 21rem;">
         <iframe class="card-img-top" src="<%= e.video %>"></iframe>
         <div class="card-header"><b><%= e.exercise %></b></div>
         <div class="card-body text-dark">
           <p class="card-text"><%= e.description %></p>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item border-dark bg-light">Sets: 3, Reps: 12</li>
+          <li class="list-group-item border-dark bg-light">Sets: <%= e.sets %></li>
+          <li class="list-group-item border-dark bg-light">Reps: <%= e.reps %></li>
           <li class="list-group-item border-dark bg-light">Equipment Needed: <% for (let n of e.equipment) { %><%= n %><% } %></li>
           <li class="list-group-item border-dark bg-light">Muscle Groups: <% for (let m of e.muscleGroups) { %><%= m %><% } %></li>
         </ul>
-        <!-- <div class="card text-white bg-dark mb-3 ml-5 mr-5" >
-            <div class="card-header card-title"><%= e.exercise %></div>
-            <div class="card-body">
-                <p class="card-text"><%= e.description %></p>
-              <p class="card-text">Equipment Needed: <% for (let n of e.equipment) { %><%= n %><% } %></p>
-              <p class="card-text">Muscle Groups: <% for (let m of e.muscleGroups) { %><%= m %><% } %></p>
-            </div> -->
         </div><% } %>
-    <!-- <a type="button" class="btn btn-secondary" id="Workout">Exercise #1</a>
-    <a type="button" class="btn btn-secondary" id="workout">Exercise #2</a>
-    <a type="button" class="btn btn-secondary" id="Workout">Exercise #3</a>
-    <a type="button" class="btn btn-secondary" id="Workout">Exercise #4</a>
-    <a type="button" class="btn btn-secondary" id="Workout">Exercise #5</a> -->
 </section>
