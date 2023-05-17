@@ -10,13 +10,23 @@
         <% }) %>
       </select>
     </div>
-
-
+    
     <div class="form-group">
       <label for="title">Stock</label>
       
       <input type="text" class="form-control" id="titleInput" placeholder="Number" name="stock">
     </div>
+
+    <div class="form-group">
+      <label for="title">Condition</label>
+      <select class="form-control" id="titleInput" name="condition" required>
+        <option value="" selected disabled>Select Condition</option>
+          <option value="Good">Good</option>
+          <option value="Moderate">Moderate</option>
+          <option value="Bad">Bad</option>
+      </select>
+    </div>
+
     <button type="submit" class="btn btn-outline-secondary">Submit</button>
   </form>
   <a href="/gym/<%= gym.id %>" class="btn btn-outline-secondary">Back</a>

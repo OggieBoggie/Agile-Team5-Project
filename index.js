@@ -5,12 +5,21 @@ const expressLayouts = require("express-ejs-layouts");
 const gymController = require("./controller/gym_controller");
 const app = express();
 const fs = require('fs')
+
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: false }));
 app.set("view engine", "ejs");
 app.use(expressLayouts);
 
-data = fs.readFileSync('../userDatabase.json', 'utf-8')
+let data;
+if (process.env.NODE_ENV === 'test') {
+  // uses a different file path for testing user data
+  data = fs.readFileSync('./test/testDatabase.json', 'utf-8');
+} else {
+  // uses the original file of the user when launching the app
+  data = fs.readFileSync('../userDatabase.json', 'utf-8');
+}
+
 parsedData = JSON.parse(data)
 
 
@@ -68,9 +77,11 @@ app.post("/register", sessionUserDatabase,authController.registerSubmit);
 app.post("/login", sessionUserDatabase,authController.loginSubmit);
 app.get("/logout", sessionUserDatabase,authController.logout);
 
-app.listen(3000, function () {
+const server = app.listen(3000, function () {
     console.log(
       "Server running. Visit: localhost:3000/home in your browser 🚀"
       );
     });
-    
+
+
+module.exports = {app, server};
