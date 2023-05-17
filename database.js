@@ -162,18 +162,42 @@ let Database = {
           "equipment": ['box', 'bench'],
           "description": "Stand in front of a box or bench, jump onto the box with both feet, then jump back down.",
           "video": "https://www.youtube.com/embed/52r_Ul5k03g"
+        },
+        {
+          "id": 21,
+          "exercise": "DB Chest Press",
+          "muscleGroups": ["pecs", "triceps"],
+          "equipment": ["DBs", "Bench"],
+          "description": "Lie on your back on a bench or mat with a dumbbell in each hand at chest level. Press the weights up until your arms are straight, then lower them back down to chest level.",
+          "video": "https://www.youtube.com/embed/I2zysDiUjCw"
+        },
+        {
+          "id": 22,
+          "exercise": "Seated DB Shoulder Press",
+          "muscleGroups": ["shoulders", "triceps"],
+          "equipment": ["DBs", "Bench"],
+          "description": "Sit on a bench with a dumbbell in each hand at shoulder level. Press the weights straight up until your arms are fully extended, then lower them back down to shoulder level",
+          "video": "https://www.youtube.com/embed/SSXS4Z8OkCg"
+        },
+        {
+          "id": 23,
+          "exercise": "SA DB Row",
+          "muscleGroups": ["Lats", "Biceps"],
+          "equipment": ["DBs", "Bench"],
+          "description": "Hold a dumbbell in one hand and place the opposite knee and hand on a bench. Pull the weight up towards your chest, then lower it back down",
+          "video": "https://www.youtube.com/embed/8SO71gogt5M"
         }
       ],
     workouts : [
         {
             'id' : 1,
-            'name': 'Upper Body 1',
-            'exercise_list': ['Barbell Bench press', 'Seated rows', 'Tricep dips', 'Plank', 'Pull-ups']
+            'name': 'Beginner Upper Body Workout',
+            'exercise_list': ['DB Chest Press', 'SA DB Row', 'Seated DB Shoulder Press', 'Tricep dips', 'Bicep curls']
         },
         {
             'id' : 2,
-            'name' : 'Upper Body 2',
-            'exercise_list': ['Bicep curls', 'Tricep dips', 'Chest flyes', 'Incline DB bench press', 'Push-ups']
+            'name' : 'Intermediate Upper Body Workout',
+            'exercise_list': ['Barbell Bench press', 'Seated DB Shoulder Press', 'Pull-ups', 'SA DB Row', 'Bicep curls', 'Tricep dips']
         },
         {
             'id' : 3,
