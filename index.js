@@ -45,8 +45,8 @@ app.get("/progress",ensureAuthenticated, gymController.progress)
 app.get("/progress/new", gymController.new)
 app.get("/progress/calendar",ensureAuthenticated, gymController.calendar)
 app.post("/progress/",sessionUserDatabase, gymController.create);
-app.get("/selectworkout",ensureAuthenticated, gymController.selectWorkout)
-app.get("/selectworkout/:id",ensureAuthenticated, gymController.displayWorkout)
+app.get("/selectworkout",ensureAuthenticated, sessionUserDatabase,gymController.selectWorkout)
+app.get("/selectworkout/:id",ensureAuthenticated, sessionUserDatabase,gymController.displayWorkout)
 
 // Manager Routes
 app.get("/addgym", ensureAuthenticated,sessionUserDatabase, gymController.viewAddGym)

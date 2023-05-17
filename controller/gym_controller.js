@@ -95,7 +95,41 @@ let gymController = {
   selectWorkout: (req, res) => {
     let selectedWorkout = undefined;
     let workouts = database.workouts;
-    res.render("gym/selectworkout", { workouts, selectedWorkout });
+    let exercises = database.exercises
+
+      // create workoutEquipmentNeededArray
+    let workoutEquipmentNeededArray = []
+    for (let workout of workouts) {
+      let workoutEquipmentObject = {
+        name: workout.name,
+        equipmentNeeded: []
+      }
+      for (let e of workout.exercise_list){
+        for (let exercise of exercises){
+          if (e.toLowerCase() === exercise.exercise.toLowerCase()){
+            for (eq of exercise.equipment) {
+              if (workoutEquipmentObject.equipmentNeeded.includes(eq) === false) {
+                workoutEquipmentObject.equipmentNeeded.push(eq)
+              }
+            }
+
+          }
+        }
+      }
+      workoutEquipmentNeededArray.push(workoutEquipmentObject)
+    }
+///////////////////////////////////////////////
+
+// create passGymArray
+    let passGymArray = []
+    for (let gym of req.database.gymAccounts) {
+      
+      passGymArray.push({
+        name: gym.gymName,
+        equipment: gym.equipment
+      })
+    }
+    res.render("gym/selectworkout", { workouts, selectedWorkout, passGymArray, workoutEquipmentNeededArray });
   },
   displayWorkout: (req, res) => {
     let exercises = database["exercises"];
@@ -109,10 +143,48 @@ let gymController = {
         exercise_objects.push(e);
       }
     }
+
+    // create passGymArray
+    let passGymArray = []
+    for (let gym of req.database.gymAccounts) {
+      
+      passGymArray.push({
+        name: gym.gymName,
+        equipment: gym.equipment
+      })
+    }
+    /////////////////////////////////////////////
+
+    // create workoutEquipmentNeededArray
+    let workoutEquipmentNeededArray = []
+    for (let workout of workouts) {
+      let workoutEquipmentObject = {
+        name: workout.name,
+        equipmentNeeded: []
+      }
+      for (let e of workout.exercise_list){
+        for (let exercise of exercises){
+          if (e.toLowerCase() === exercise.exercise.toLowerCase()){
+            for (eq of exercise.equipment) {
+              if (workoutEquipmentObject.equipmentNeeded.includes(eq) === false) {
+                workoutEquipmentObject.equipmentNeeded.push(eq)
+              }
+            }
+
+          }
+        }
+      }
+      workoutEquipmentNeededArray.push(workoutEquipmentObject)
+    }
+///////////////////////////////////////
+
+
     res.render("gym/selectworkout", {
       workouts,
       exercise_objects,
       selectedWorkout,
+      passGymArray,
+      workoutEquipmentNeededArray
     });
   },
   viewAddGym: (req, res) => {
