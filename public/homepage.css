@@ -56,3 +56,23 @@ section{
     background-size: cover;
     color: black;
 }
+
+
+/*==================MOBILE=======================*/
+@media screen and (max-width: 800px){
+
+    body{
+        display: block;
+    }
+
+    .navbar{
+        height: 100px;
+    }
+
+    section{
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+}
