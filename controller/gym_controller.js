@@ -397,6 +397,16 @@ let gymController = {
     fs.writeFileSync("../userDatabase.json", dataString);
     res.redirect("/gym/" + req.params.id);
   },
+  viewGyms: (req, res) => {
+    const gyms = []
+    for (const gymAccount of req.database.gymAccounts) {
+      for (const gym of gymAccount.gyms) {
+        gyms.push(gym)
+      }
+    }
+    console.log(gyms)
+    res.render("gym/gyms" , { gyms })
+  }
 };
 
 module.exports = gymController;
