@@ -95,15 +95,5 @@
             "progress": []
         }
     ],
-    "gymAccounts": [
-        {
-            "id": "G1",
-            "name": "John Smith",
-            "email": "johnny123@gmail.com",
-            "password": "j",
-            "gymAccount": "true",
-            "gymName": "John's Gym",
-            "equipment": []
-        }
-    ]
+    "gymAccounts": []
 }

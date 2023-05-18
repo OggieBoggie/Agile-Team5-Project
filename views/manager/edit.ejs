@@ -1,22 +1,21 @@
 <div class="container">
   <h1 class="page-header">Edit</h1>
   <form action="/gym/<%= gymID %>/equipment/<%= equipment.id %>" method="POST">
-
-    <div class='form-group'>
-      <label for="title">Name</label>
-      <select class="form-control" id="titleInput" name="name" required>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <select class="form-control" id="name" name="name" required>
         <option value="<%= equipment.name %>"><%= equipment.name %></option>
         <% for (const e of equipmentArray) { %>
-          <% if (e != equipment.name) { %>
-          <option value="<%= e %>"><%= e %></option>
-        <% } } %>
-        </select>
+          <% if (e !== equipment.name) { %>
+            <option value="<%= e %>"><%= e %></option>
+          <% } %>
+        <% } %>
+      </select>
     </div>
 
-
     <div class="form-group">
-      <label for="title">Stock</label>
-      <input type="text" name="stock" class="form-control" id="titleInput" value="<%= equipment.stock %>">
+      <label for="stock">Stock</label>
+      <input type="text" name="stock" class="form-control" id="stock" value="<%= equipment.stock %>">
     </div>
 
     <div class="form-group">
@@ -24,9 +23,10 @@
       <select class="form-control" id="conditionInput" name="condition" onchange="showInputField()" required>
         <option value="<%= equipment.condition %>"><%= equipment.condition %></option>
         <% for (const c of conditions) { %>
-          <% if (c != equipment.condition) { %>
-          <option value="<%= c %>"><%= c %></option>
-        <% } } %>
+          <% if (c !== equipment.condition) { %>
+            <option value="<%= c %>"><%= c %></option>
+          <% } %>
+        <% } %>
       </select>
     </div>
     <div id="repairNote" class="form-group" style="display: none;">
@@ -35,7 +35,7 @@
     </div>
     <button type="submit" class="btn btn-outline-secondary">Submit</button>
   </form>
-  <a href="/gym/<%= gymID %>" class="btn btn-outline-secondary">Back</a>
+  <a href="/gym/<%= gymID %>" class="btn btn-secondary mt-3">Back</a>
 </div>
 <script>
   const option = document.getElementById('conditionInput').value;
