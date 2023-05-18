@@ -206,6 +206,7 @@ let gymController = {
       id: req.user.gyms.length + 1,
       name: req.body.name,
       address: req.body.address,
+      phone: req.body.phone,
       equipment: [],
     };
     let gymAc = req.database.gymAccounts.find((gymAc) => {
@@ -257,6 +258,7 @@ let gymController = {
       if (g.id === gymID) {
         g.name = req.body.name;
         g.address = req.body.address;
+        g.phone = req.body.phone
       }
     }
 
@@ -266,6 +268,8 @@ let gymController = {
           if (g.id === gymID) {
             g.name = req.body.name;
             g.address = req.body.address;
+            g.phone = req.body.phone
+
           }
         }
       }
@@ -386,8 +390,7 @@ let gymController = {
       id: req.user.gyms[gymIndex].equipment.length + 1,
       name: req.body.name,
       stock: req.body.stock,
-      condition: req.body.condition,
-      repairNote: req.body.repairNote
+      condition: req.body.condition
     };
     let gymAc = req.database.gymAccounts.find((gymAc) => {
       return gymAc.id === req.user.id;
@@ -398,6 +401,16 @@ let gymController = {
     fs.writeFileSync("../userDatabase.json", dataString);
     res.redirect("/gym/" + req.params.id);
   },
+  viewGyms: (req, res) => {
+    const gyms = []
+    for (const gymAccount of req.database.gymAccounts) {
+      for (const gym of gymAccount.gyms) {
+        gyms.push(gym)
+      }
+    }
+    console.log(gyms)
+    res.render("gym/gyms" , { gyms })
+  }
 };
 
 module.exports = gymController;
