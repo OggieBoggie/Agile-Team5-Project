@@ -6,22 +6,20 @@
 
 <ul class="list-group">
   <% gym.equipment.forEach(function (e) { %>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      <div>
-        <strong><%= e.name %>:</strong>
-        Stock: <%= e.stock %>
-      </div>
-      <div>
-        <% if (e.condition == "Good") { %>
-          <span class="badge bg-success"><%= e.condition %></span>
-        <% } else if (e.condition == "Moderate") { %>
-          <span class="badge bg-warning text-dark"><%= e.condition %></span>
-        <% } else { %>
-          <span class="badge bg-danger"><%= e.condition %></span>
-        <% } %>
-        <a class="ml-3" href="/gym/<%= gym.id %>/equipment/<%= e.id %>">Edit</a>
-        <a class="ml-2" href="/gym/<%= gym.id %>/equipment/delete/<%= e.id %>">Delete</a>
-      </div>
+    <li class="list-group-item">
+      <strong><%= e.name %>: </strong>
+      Stock: <%= e.stock %>
+      <% if (e.condition == "Good") { %>
+        <span class="badge badge-success"><%= e.condition %></span>
+      <% } else if (e.condition == "Moderate") { %>
+        <span class="badge badge-warning"><%= e.condition %></span>
+      <% } else { %>
+        <span class="badge badge-danger"><%= e.condition %></span>
+      <% } %>
+      <a class="pull-right" href="/gym/<%= gym.id %>/equipment/<%= e.id %>">|   Edit   |</a>
+      <a class="pull-right" href="/gym/<%= gym.id %>/equipment/delete/<%= e.id %>">Delete    |</a>
+      <% if (e.repairNote) { %>
+      <p>Repair Note: <%= e.repairNote %></p>
     </li>
-  <% }) %>
+  <% } }) %>
 </ul>
