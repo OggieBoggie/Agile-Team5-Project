@@ -1,33 +1,47 @@
 <div class="container">
   <form action="/gym/<%= gym.id %>/addequipment" method="POST">
-    
     <div class="form-group">
-      <label for="title">Name</label>
-      <select class="form-control" id="titleInput" name="name" required>
+      <label for="name">Name</label>
+      <select class="form-control" id="name" name="name" required>
         <option value="" selected disabled>Select a type</option>
         <% equipmentArray.forEach(equipment => { %>
           <option value="<%= equipment %>"><%= equipment %></option>
         <% }) %>
       </select>
     </div>
-    
+
     <div class="form-group">
       <label for="title">Stock</label>
-      
       <input type="text" class="form-control" id="titleInput" placeholder="Number" name="stock">
     </div>
 
     <div class="form-group">
       <label for="title">Condition</label>
-      <select class="form-control" id="titleInput" name="condition" required>
+      <select class="form-control" id="conditionInput" name="condition" onchange="showInputField()" required>
         <option value="" selected disabled>Select Condition</option>
-          <option value="Good">Good</option>
-          <option value="Moderate">Moderate</option>
-          <option value="Bad">Bad</option>
+        <option value="Good">Good</option>
+        <option value="Moderate">Moderate</option>
+        <option value="Bad">Bad</option>
       </select>
+    </div>
+
+    <div id="repairNote" class="form-group" style="display: none;">
+      <label for="description">Repair Note</label>
+      <textarea class="form-control" id="descriptionInput" rows="3" placeholder="Note" name="repairNote"></textarea>
     </div>
 
     <button type="submit" class="btn btn-outline-secondary">Submit</button>
   </form>
-  <a href="/gym/<%= gym.id %>" class="btn btn-outline-secondary">Back</a>
+  <a href="/gym/<%= gym.id %>" class="btn btn-secondary mt-3">Back</a>
 </div>
+<script>
+  const showInputField = () => {
+    const option = document.getElementById('conditionInput').value;
+    const repairNoteTextField = document.getElementById('repairNote');
+    if (option == "Bad") {
+      repairNoteTextField.style.display = "block"
+    } else {
+      repairNoteTextField.style.display = "none"
+    }
+  }
+</script>

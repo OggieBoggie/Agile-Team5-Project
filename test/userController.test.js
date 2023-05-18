@@ -34,7 +34,7 @@ const {
         // call email function and pass in the email and password
         const result = getUserByEmailIdAndPassword(email, password);
 
-        // assertions, expectt the function to return the mockUser, and called with email
+        // assertions, expect the function to return the mockUser, and called with email
         expect(result).toEqual(mockUser);
         expect(userModel.findOne).toHaveBeenCalledWith(email);
       });

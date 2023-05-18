@@ -314,16 +314,27 @@ let gymController = {
     req.user.gyms[gymIndex].equipment[equipmentIndex].stock = req.body.stock;
     req.user.gyms[gymIndex].equipment[equipmentIndex].condition =
       req.body.condition;
-    req.database.gymAccounts[userIndex].gyms[gymIndex].equipment[
-      equipmentIndex
-    ].name = req.body.name;
-    req.database.gymAccounts[userIndex].gyms[gymIndex].equipment[
-      equipmentIndex
-    ].stock = req.body.stock;
-    req.database.gymAccounts[userIndex].gyms[gymIndex].equipment[
-      equipmentIndex
-    ].condition = req.body.condition;
-
+      req.database.gymAccounts[userIndex].gyms[gymIndex].equipment[
+        equipmentIndex
+      ].name = req.body.name;
+      req.database.gymAccounts[userIndex].gyms[gymIndex].equipment[
+        equipmentIndex
+      ].stock = req.body.stock;
+      req.database.gymAccounts[userIndex].gyms[gymIndex].equipment[
+        equipmentIndex
+      ].condition = req.body.condition;
+      
+      if (req.body.condition == "Bad") {
+        req.user.gyms[gymIndex].equipment[equipmentIndex].repairNote = req.body.repairNote;
+        req.database.gymAccounts[userIndex].gyms[gymIndex].equipment[
+          equipmentIndex
+        ].repairNote = req.body.repairNote;
+      } else {
+        req.user.gyms[gymIndex].equipment[equipmentIndex].repairNote = ""
+        req.database.gymAccounts[userIndex].gyms[gymIndex].equipment[
+          equipmentIndex
+        ].repairNote = "";
+      }
     let dataString = JSON.stringify(req.database);
     fs.writeFileSync("../userDatabase.json", dataString);
     res.redirect("/gym/" + req.params.gid);
@@ -375,7 +386,7 @@ let gymController = {
       id: req.user.gyms[gymIndex].equipment.length + 1,
       name: req.body.name,
       stock: req.body.stock,
-      condition: req.body.condition,
+      condition: req.body.condition
     };
     let gymAc = req.database.gymAccounts.find((gymAc) => {
       return gymAc.id === req.user.id;
