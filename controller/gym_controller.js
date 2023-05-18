@@ -206,6 +206,7 @@ let gymController = {
       id: req.user.gyms.length + 1,
       name: req.body.name,
       address: req.body.address,
+      phone: req.body.phone,
       equipment: [],
     };
     let gymAc = req.database.gymAccounts.find((gymAc) => {
@@ -257,6 +258,7 @@ let gymController = {
       if (g.id === gymID) {
         g.name = req.body.name;
         g.address = req.body.address;
+        g.phone = req.body.phone
       }
     }
 
@@ -266,6 +268,8 @@ let gymController = {
           if (g.id === gymID) {
             g.name = req.body.name;
             g.address = req.body.address;
+            g.phone = req.body.phone
+
           }
         }
       }
