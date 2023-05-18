@@ -1,33 +1,31 @@
 <div class="container">
   <form action="/gym/<%= gym.id %>/addequipment" method="POST">
-    
     <div class="form-group">
-      <label for="title">Name</label>
-      <select class="form-control" id="titleInput" name="name" required>
+      <label for="name">Name</label>
+      <select class="form-control" id="name" name="name" required>
         <option value="" selected disabled>Select a type</option>
         <% equipmentArray.forEach(equipment => { %>
           <option value="<%= equipment %>"><%= equipment %></option>
         <% }) %>
       </select>
     </div>
-    
+
     <div class="form-group">
-      <label for="title">Stock</label>
-      
-      <input type="text" class="form-control" id="titleInput" placeholder="Number" name="stock">
+      <label for="stock">Stock</label>
+      <input type="text" class="form-control" id="stock" placeholder="Number" name="stock">
     </div>
 
     <div class="form-group">
-      <label for="title">Condition</label>
-      <select class="form-control" id="titleInput" name="condition" required>
+      <label for="condition">Condition</label>
+      <select class="form-control" id="condition" name="condition" required>
         <option value="" selected disabled>Select Condition</option>
-          <option value="Good">Good</option>
-          <option value="Moderate">Moderate</option>
-          <option value="Bad">Bad</option>
+        <option value="Good">Good</option>
+        <option value="Moderate">Moderate</option>
+        <option value="Bad">Bad</option>
       </select>
     </div>
 
-    <button type="submit" class="btn btn-outline-secondary">Submit</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
   </form>
-  <a href="/gym/<%= gym.id %>" class="btn btn-outline-secondary">Back</a>
+  <a href="/gym/<%= gym.id %>" class="btn btn-secondary mt-3">Back</a>
 </div>

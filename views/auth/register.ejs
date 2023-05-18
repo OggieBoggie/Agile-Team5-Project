@@ -39,24 +39,24 @@
 </div>
 <script>
   const gymAccountButton = document.getElementById('gymAccountButton');
-const userAccountButton = document.getElementById('userAccountButton');
-const userAccountForm = document.getElementById('userAccount');
-const gymAccountForm = document.getElementById('gymAccount');
+  const userAccountButton = document.getElementById('userAccountButton');
+  const userAccountForm = document.getElementById('userAccount');
+  const gymAccountForm = document.getElementById('gymAccount');
 
 
-gymAccountButton.addEventListener('click', () => {
-  gymAccountButton.classList.add('active');
-  userAccountButton.classList.remove('active');
-  gymAccountForm.style.display = "block"
-  userAccountForm.style.display = "none"
-});
+  gymAccountButton.addEventListener('click', () => {
+    gymAccountButton.classList.add('active');
+    userAccountButton.classList.remove('active');
+    gymAccountForm.style.display = "block"
+    userAccountForm.style.display = "none"
+  });
 
-userAccountButton.addEventListener('click', () => {
-  userAccountButton.classList.add('active');
-  gymAccountButton.classList.remove('active');
-  userAccountForm.style.display = "block"
-  gymAccountForm.style.display = "none"
-});
+  userAccountButton.addEventListener('click', () => {
+    userAccountButton.classList.add('active');
+    gymAccountButton.classList.remove('active');
+    userAccountForm.style.display = "block"
+    gymAccountForm.style.display = "none"
+  });
 
 </script>
   
