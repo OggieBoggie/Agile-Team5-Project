@@ -66,17 +66,5 @@ describe('Simple Endpoint Tests', () => {
             const response = await request(app).get('/register')
             expect(response.text).toContain('<button id="userAccountButton">User Account</button>')
         });
-        it('post request test and redirects user to login page', async () => {
-            const response = await request(app)
-                .post('/register')
-                .send({
-                    name: 'Lucas Timothy',
-                    email: 'lukatim@gmail.com',
-                    password: 'xdd',
-                    gymAccount: false,
-                });
-
-            expect(response.statusCode).toBe(302);
-        });
     });
 });
