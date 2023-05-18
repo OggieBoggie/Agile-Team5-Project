@@ -16,6 +16,8 @@
       <% } %>
       <a class="pull-right" href="/gym/<%= gym.id %>/equipment/<%= e.id %>">|   Edit   |</a>
       <a class="pull-right" href="/gym/<%= gym.id %>/equipment/delete/<%= e.id %>">Delete    |</a>
+      <% if (e.repairNote) { %>
+      <p>Repair Note: <%= e.repairNote %></p>
     </li>
-  <% }) %>
+  <% } }) %>
 </ul>

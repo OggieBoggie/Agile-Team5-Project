@@ -21,7 +21,7 @@
 
     <div class="form-group">
       <label for="title">Condition</label>
-      <select class="form-control" id="titleInput" name="condition" required>
+      <select class="form-control" id="conditionInput" name="condition" onchange="showInputField()" required>
         <option value="<%= equipment.condition %>"><%= equipment.condition %></option>
         <% for (const c of conditions) { %>
           <% if (c != equipment.condition) { %>
@@ -29,7 +29,27 @@
         <% } } %>
       </select>
     </div>
+    <div id="repairNote" class="form-group" style="display: none;">
+      <label for="description">Repair Note</label>
+      <textarea class="form-control" id="descriptionInput" rows="3" placeholder="Note" name="repairNote"><%= equipment.repairNote %></textarea>
+    </div>
     <button type="submit" class="btn btn-outline-secondary">Submit</button>
   </form>
   <a href="/gym/<%= gymID %>" class="btn btn-outline-secondary">Back</a>
 </div>
+<script>
+  const option = document.getElementById('conditionInput').value;
+  const repairNoteTextField = document.getElementById('repairNote');
+  if (option == "Bad") {
+    repairNoteTextField.style.display = "block"
+  }
+  const showInputField = () => {
+    const option = document.getElementById('conditionInput').value;
+    const repairNoteTextField = document.getElementById('repairNote');
+    if (option == "Bad") {
+      repairNoteTextField.style.display = "block"
+    } else {
+      repairNoteTextField.style.display = "none"
+    }
+  }
+</script>
