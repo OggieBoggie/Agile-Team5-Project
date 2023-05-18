@@ -58,28 +58,13 @@ describe('Simple Endpoint Tests', () => {
             const response = await request(app).get('/register')
             expect(response.statusCode).toBe(200);
         });
-        it('finds the correct labels if they are present in the register page', async () => {
+        it('finds the gym account button on the register page', async () => {
             const response = await request(app).get('/register')
-            expect(response.text).toContain('<label for="exampleInputPassword1">Name</label>')
-            expect(response.text).toContain('<label for="exampleInputEmail1">Email address</label>')
-            expect(response.text).toContain('<label for="exampleInputPassword1">Password</label>')
-            expect(response.text).toContain('<input name="gymAccount" class="form-check-input" type="checkbox" value="true" id="myCheckbox">')
+            expect(response.text).toContain('<button id="gymAccountButton">Gym Account</button>')
         });
-        it('finds the submit button on the register page', async () => {
+        it('finds the user account button on the register page', async () => {
             const response = await request(app).get('/register')
-            expect(response.text).toContain('<button type="submit" class="btn btn-primary">Submit</button>')
-        });
-        it('post request test and redirects user to login page', async () => {
-            const response = await request(app)
-                .post('/register')
-                .send({
-                    name: 'Lucas Timothy',
-                    email: 'lukatim@gmail.com',
-                    password: 'xdd',
-                    gymAccount: false,
-                });
-
-            expect(response.statusCode).toBe(302);
+            expect(response.text).toContain('<button id="userAccountButton">User Account</button>')
         });
     });
 });

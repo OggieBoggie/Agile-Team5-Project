@@ -1,6 +1,13 @@
 const fs = require('fs')
 
-data = fs.readFileSync('../userDatabase.json', 'utf-8')
+let data;
+if (process.env.NODE_ENV === 'test') {
+  // uses a different file path for testing user data
+  data = fs.readFileSync('./test/testDatabase.json', 'utf-8');
+} else {
+  // uses the original file of the user when launching the app
+  data = fs.readFileSync('../userDatabase.json', 'utf-8');
+}
 parsedData = JSON.parse(data)
 
 module.exports = {
