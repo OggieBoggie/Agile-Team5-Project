@@ -5,7 +5,8 @@
             <div class="d-flex flex-row justify-content-between flex-wrap" style="width: 100%;">
               <% for (let g of gyms) { %>
               <div class="card border-dark bg-light m-2" style="width: 21rem;">
-                <div class="card-header"><b><%= g.name %> - <%= g.address %></b></div>
+                <div class="card-header"><b><%= g.name %> - <%= g.address %></b>
+                <p>Phone: <%= g.phone %></p></div>
                 <div class="card-body text-dark">
                   <h1 style="font-size: 20px;">Equipment</h1>
                   <table class="table">
