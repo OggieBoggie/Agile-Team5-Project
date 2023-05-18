@@ -95,103 +95,107 @@ let gymController = {
   selectWorkout: (req, res) => {
     let selectedWorkout = undefined;
     let workouts = database.workouts;
-    let exercises = database.exercises
+    let exercises = database.exercises;
 
-      // create workoutEquipmentNeededArray
-    let workoutEquipmentNeededArray = []
+    // create workoutEquipmentNeededArray
+    let workoutEquipmentNeededArray = [];
     for (let workout of workouts) {
       let workoutEquipmentObject = {
         name: workout.name,
-        equipmentNeeded: []
-      }
-      for (let e of workout.exercise_list){
-        for (let exercise of exercises){
-          if (e.toLowerCase() === exercise.exercise.toLowerCase()){
+        equipmentNeeded: [],
+      };
+      for (let e of workout.exercise_list) {
+        for (let exercise of exercises) {
+          if (e.toLowerCase() === exercise.exercise.toLowerCase()) {
             for (eq of exercise.equipment) {
-              if (workoutEquipmentObject.equipmentNeeded.includes(eq) === false) {
-                workoutEquipmentObject.equipmentNeeded.push(eq)
+              if (
+                workoutEquipmentObject.equipmentNeeded.includes(eq) === false
+              ) {
+                workoutEquipmentObject.equipmentNeeded.push(eq);
               }
             }
-
           }
         }
       }
-      workoutEquipmentNeededArray.push(workoutEquipmentObject)
+      workoutEquipmentNeededArray.push(workoutEquipmentObject);
     }
-///////////////////////////////////////////////
+    ///////////////////////////////////////////////
 
-// create passGymArray
-let passGymArray = []
-for (owner of req.database.gymAccounts){
-  
-  for (let gym of owner.gyms) {
-    
-    passGymArray.push({
-      name: gym.name,
-      equipment: gym.equipment
-    })
-  }
-  res.render("gym/selectworkout", { workouts, selectedWorkout, passGymArray, workoutEquipmentNeededArray });
-}
-},
-    displayWorkout: (req, res) => {
-      let exercises = database["exercises"];
-      let workouts = database["workouts"];
-      let selectedWorkout = database.workouts.find((workout) => {
-        return workout.id == req.params.id;
-      });
-      let exercise_objects = [];
+    // create passGymArray
+    let passGymArray = [];
+    for (owner of req.database.gymAccounts) {
+      for (let gym of owner.gyms) {
+        passGymArray.push({
+          name: gym.name,
+          equipment: gym.equipment,
+        });
+      }
+    }
+    res.render("gym/selectworkout", {
+      workouts,
+      selectedWorkout,
+      passGymArray,
+      workoutEquipmentNeededArray,
+    });
+  },
+  displayWorkout: (req, res) => {
+    let exercises = database["exercises"];
+    let workouts = database["workouts"];
+    let selectedWorkout = database.workouts.find((workout) => {
+      return workout.id == req.params.id;
+    });
+    let exercise_objects = [];
     for (let e of exercises) {
       if (selectedWorkout.exercise_list.includes(e.exercise)) {
         exercise_objects.push(e);
       }
     }
-    
+
     // create passGymArray
-    let passGymArray = []
-    for (owner of req.database.gymAccounts){
-    for (let gym of owner.gyms) {
-      
-      passGymArray.push({
-        name: gym.name,
-        equipment: gym.equipment
-      })
-    }}
+    let passGymArray = [];
+    for (owner of req.database.gymAccounts) {
+      for (let gym of owner.gyms) {
+        passGymArray.push({
+          name: gym.name,
+          equipment: gym.equipment,
+        });
+      }
+    }
     /////////////////////////////////////////////
-    
+
     // create workoutEquipmentNeededArray
 
-    let workoutEquipmentNeededArray = []
+    let workoutEquipmentNeededArray = [];
 
     for (let workout of workouts) {
       let workoutEquipmentObject = {
         name: workout.name,
-        equipmentNeeded: []
-      }
-      for (let e of workout.exercise_list){
-        for (let exercise of exercises){
-          if (e.toLowerCase() === exercise.exercise.toLowerCase()){
+        equipmentNeeded: [],
+      };
+      for (let e of workout.exercise_list) {
+        for (let exercise of exercises) {
+          if (e.toLowerCase() === exercise.exercise.toLowerCase()) {
             for (eq of exercise.equipment) {
-              if (workoutEquipmentObject.equipmentNeeded.includes(eq) === false) {
-                workoutEquipmentObject.equipmentNeeded.push(eq)
+              if (
+                workoutEquipmentObject.equipmentNeeded.includes(eq) === false
+              ) {
+                workoutEquipmentObject.equipmentNeeded.push(eq);
               }
             }
-
           }
         }
       }
-      workoutEquipmentNeededArray.push(workoutEquipmentObject)
+      workoutEquipmentNeededArray.push(workoutEquipmentObject);
     }
-    
-///////////////////////////////////////
 
+    ///////////////////////////////////////
 
     res.render("gym/selectworkout", {
       workouts,
       exercise_objects,
       selectedWorkout,
       passGymArray,
-      workoutEquipmentNeededArray
+      workoutEquipmentNeededArray,
     });
   },
   viewAddGym: (req, res) => {
@@ -282,7 +286,7 @@ for (owner of req.database.gymAccounts){
   viewEditEquipment: (req, res) => {
     let gymIndex = Number(req.params.gid) - 1;
     let equipmentIndex = Number(req.params.eid) - 1;
-    let equipment = req.user.gyms[gymIndex].equipment[equipmentIndex]
+    let equipment = req.user.gyms[gymIndex].equipment[equipmentIndex];
     let equipmentArray = [];
     for (let ex of database.exercises) {
       for (let e of ex.equipment) {
@@ -292,9 +296,14 @@ for (owner of req.database.gymAccounts){
         }
       }
     }
-    const conditions = ["Good", "Moderate", "Bad"]
-    const gymID = Number(req.params.gid)
-    res.render("manager/edit", { gymID ,equipment, equipmentArray, conditions });
+    const conditions = ["Good", "Moderate", "Bad"];
+    const gymID = Number(req.params.gid);
+    res.render("manager/edit", {
+      gymID,
+      equipment,
+      equipmentArray,
+      conditions,
+    });
   },
   editEquipment: (req, res) => {
     const userIndex = Number(req.user.id.substring(1)) - 1;
@@ -303,10 +312,17 @@ for (owner of req.database.gymAccounts){
 
     req.user.gyms[gymIndex].equipment[equipmentIndex].name = req.body.name;
     req.user.gyms[gymIndex].equipment[equipmentIndex].stock = req.body.stock;
-    req.user.gyms[gymIndex].equipment[equipmentIndex].condition = req.body.condition;
-    req.database.gymAccounts[userIndex].gyms[gymIndex].equipment[equipmentIndex].name = req.body.name;
-    req.database.gymAccounts[userIndex].gyms[gymIndex].equipment[equipmentIndex].stock = req.body.stock;
-    req.database.gymAccounts[userIndex].gyms[gymIndex].equipment[equipmentIndex].condition = req.body.condition;
+    req.user.gyms[gymIndex].equipment[equipmentIndex].condition =
+      req.body.condition;
+    req.database.gymAccounts[userIndex].gyms[gymIndex].equipment[
+      equipmentIndex
+    ].name = req.body.name;
+    req.database.gymAccounts[userIndex].gyms[gymIndex].equipment[
+      equipmentIndex
+    ].stock = req.body.stock;
+    req.database.gymAccounts[userIndex].gyms[gymIndex].equipment[
+      equipmentIndex
+    ].condition = req.body.condition;
 
     let dataString = JSON.stringify(req.database);
     fs.writeFileSync("../userDatabase.json", dataString);
@@ -340,7 +356,7 @@ for (owner of req.database.gymAccounts){
     let gym = req.user.gyms.find(function (gym) {
       return gym.id == gymID;
     });
-    
+
     let equipmentArray = [];
     for (let ex of database.exercises) {
       for (let e of ex.equipment) {
@@ -359,7 +375,7 @@ for (owner of req.database.gymAccounts){
       id: req.user.gyms[gymIndex].equipment.length + 1,
       name: req.body.name,
       stock: req.body.stock,
-      condition: req.body.condition
+      condition: req.body.condition,
     };
     let gymAc = req.database.gymAccounts.find((gymAc) => {
       return gymAc.id === req.user.id;
