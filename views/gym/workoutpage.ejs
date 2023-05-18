@@ -21,7 +21,7 @@
 <section class="d-flex flex-row">
     <% for (let e of randomWorkoutList) { %>
       <div class="card border-dark bg-light m-2" style="width: 21rem;">
-        <iframe class="card-img-top" src="<%= e.video %>"></iframe>
+        <iframe allow="fullscreen" class="card-img-top" src="<%= e.video %>"></iframe>
         <div class="card-header"><b><%= e.exercise %></b></div>
         <div class="card-body text-dark">
           <p class="card-text"><%= e.description %></p>
