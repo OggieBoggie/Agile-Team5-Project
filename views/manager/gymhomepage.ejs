@@ -1,10 +1,10 @@
 <header class="p-3 mb-2 bg-dark text-white">
   <h1>Gyms</h1>
 </header>
-<a class="btn btn-outline-secondary" href=<%= "/addgym" %>>Add Gym</a>
-<section class="d-flex flex-row">
+<a class="btn btn-secondary rounded-pill px-3" style="margin: 10px;" href=<%= "/addgym" %>>Add Gym</a>
+<section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));">
   <% gyms.forEach(function (g) { %>
-    <div class="card border-dark bg-light" style="width: 18rem;">
+    <div class="card border-dark bg-light" style="width: 18rem; margin: 10px;">
         <div class="card-header"><b><%= g.name %></b> - <%= g.address %></p></div>
         <div class="card-body text-dark">
           <p><a class="pull-right btn btn-outline-secondary" href=<%= "/gym/" + g.id %>>Manage Equipment</a></p>
