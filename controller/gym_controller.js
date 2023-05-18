@@ -121,42 +121,48 @@ let gymController = {
 ///////////////////////////////////////////////
 
 // create passGymArray
-    let passGymArray = []
-    for (let gym of req.database.gymAccounts) {
-      
-      passGymArray.push({
-        name: gym.gymName,
-        equipment: gym.equipment
-      })
-    }
-    res.render("gym/selectworkout", { workouts, selectedWorkout, passGymArray, workoutEquipmentNeededArray });
-  },
-  displayWorkout: (req, res) => {
-    let exercises = database["exercises"];
-    let workouts = database["workouts"];
-    let selectedWorkout = database.workouts.find((workout) => {
-      return workout.id == req.params.id;
-    });
-    let exercise_objects = [];
+let passGymArray = []
+for (owner of req.database.gymAccounts){
+  
+  for (let gym of owner.gyms) {
+    
+    passGymArray.push({
+      name: gym.name,
+      equipment: gym.equipment
+    })
+  }
+  res.render("gym/selectworkout", { workouts, selectedWorkout, passGymArray, workoutEquipmentNeededArray });
+}
+},
+    displayWorkout: (req, res) => {
+      let exercises = database["exercises"];
+      let workouts = database["workouts"];
+      let selectedWorkout = database.workouts.find((workout) => {
+        return workout.id == req.params.id;
+      });
+      let exercise_objects = [];
     for (let e of exercises) {
       if (selectedWorkout.exercise_list.includes(e.exercise)) {
         exercise_objects.push(e);
       }
     }
-
+    
     // create passGymArray
     let passGymArray = []
-    for (let gym of req.database.gymAccounts) {
+    for (owner of req.database.gymAccounts){
+    for (let gym of owner.gyms) {
       
       passGymArray.push({
-        name: gym.gymName,
+        name: gym.name,
         equipment: gym.equipment
       })
-    }
+    }}
     /////////////////////////////////////////////
-
+    
     // create workoutEquipmentNeededArray
+
     let workoutEquipmentNeededArray = []
+
     for (let workout of workouts) {
       let workoutEquipmentObject = {
         name: workout.name,
@@ -176,6 +182,7 @@ let gymController = {
       }
       workoutEquipmentNeededArray.push(workoutEquipmentObject)
     }
+    
 ///////////////////////////////////////
 
 

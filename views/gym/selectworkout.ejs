@@ -14,12 +14,12 @@
           </div>
         </div>
       </div>
-      <div>
-        <ul class=gymNameUL style="display:none; list-style:none; background-color:white; padding:0">
+      <div class="gymNameULdiv" style="float: left;position: absolute;width: 89.5%;">
+        <ul class='gymNameUL ' style="display:none; list-style:none; background-color:white; padding:0">
           <% for (let gym of passGymArray) { %>
             <li> 
-              <ul class=gymEquipmentUL style="list-style: none; padding:0" >
-                <li class="gymName" style="color:rgb(55, 61, 67); margin:0; padding:5px"><%= gym.name %></li>
+              <ul class=gymEquipmentUL style="list-style: none; padding:0;" >
+                <li class="gymName" style="color:rgb(55, 61, 67); margin:0; padding:5px; border-bottom-style: groove; border-bottom-width: 1px;   border-left-style: groove; border-left-width: 1px;border-right-style: groove; border-right-width: 1px; ;"><%= gym.name %></li>
               <% for (let e of gym.equipment) { %>
                 <li class='gymEquipment' style="display:none"> <%= e.name %></li>
               <% } %>
@@ -93,6 +93,7 @@ const equipmentFilterButton = document.querySelector('.equipmentFilterButton')
 const nameFilterButton = document.querySelector('.nameFilterButton')
 const dropdownShow = document.querySelector('.filterButton')
 const gymNameLIArray = document.querySelectorAll('.gymName')
+
 /////////////////////////////////////////////////////////////////////////
 
 // initialize gym array
@@ -172,8 +173,34 @@ console.log(workoutEquipmentArray)
 function organizeList() {
   console.log(' ')
   if (filterDropdown.innerHTML.toLowerCase() === 'equipment'){
-  
+    for (let workout of workoutButtonArray) {
 
+      console.log(workout.innerHTML)
+      
+      ////////////////
+      for (let we of workoutEquipmentArray) {
+        if (we.name.toLowerCase() === workout.innerHTML.toLowerCase()) {
+          let success = false
+          for (let e of we.equipment) {
+            if (e.toLowerCase().includes( filterInput.value.toLowerCase()) ){
+              success = true
+              break
+            }
+
+          } 
+
+          if (success === true) {
+            workout.style.display = 'inline-block'
+          } else {
+            workout.style.display = 'none'
+          }
+        }
+        ////////////////
+        
+      }
+      ///////////////////
+    }
+    ////////////////
 
 
   } else if (filterDropdown.innerHTML.toLowerCase() === 'gym') {
@@ -259,17 +286,32 @@ function organizeList() {
 function selectFilter2(e){
   if (e.target.textContent === 'Name') {
     filterDropdown.textContent = 'Name'
+    gymNameUL.style.display = 'none'
+    filterInput.value = ''
   } else if (e.target.textContent === 'Gym'){
     filterDropdown.textContent = 'Gym'
     gymNameUL.style.display = 'block'
+    filterInput.value = ''
   } else {
     filterDropdown.textContent = 'Equipment'
+    gymNameUL.style.display = 'none'
+    filterInput.value = ''
   }
-  console.log(e.target.textContent)
+  organizeList()
+  for (workout of workoutButtonArray) {
+    workout.style.display = 'inline-block'
+  }
+}
+
+function selectGym (e) {
+  filterInput.value = e.target.textContent
+  organizeList()
 }
 
 filterInput.addEventListener('keyup', organizeList)
 dropdownShow.addEventListener('click', selectFilter2)
+gymNameUL.addEventListener('click', selectGym)
+
 
 
 
