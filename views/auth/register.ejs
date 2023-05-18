@@ -1,10 +1,10 @@
 <link rel="stylesheet" href="register.css" />
 <div class="container">
   <div class="button-group">
-    <button id="gymAccountButton">Gym Account</button>
     <button id="userAccountButton">User Account</button>
+    <button id="gymAccountButton">Gym Account</button>
   </div>
-  <form action="/register" method="POST">
+  <form id="userAccount" action="/register" method="POST" style="display: none;">
     <div class="form-group">
       <label for="exampleInputPassword1">Name</label>
       <input name="name" type="name" class="form-control" id="exampleInputPassword1" placeholder="Name">
@@ -18,15 +18,45 @@
       <label for="exampleInputPassword1">Password</label>
       <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
     </div>
-    <div class="form-group">
-      <input name="gymAccount" class="form-check-input" type="checkbox" value="true" id="myCheckbox">
-      <label class="form-check-label" for="flexCheckDefault">
-        Gym Account
-      </label>
-    </div>
     <button type="submit" class="btn btn-primary btn-block">Register</button>
   </form>
-</div>ç
+  <form id="gymAccount" action="/register" method="POST" style="display: none;">
+    <div class="form-group">
+      <label for="exampleInputPassword1">Name</label>
+      <input name="name" type="name" class="form-control" id="exampleInputPassword1" placeholder="Name">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      <small class="small">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-primary btn-block" name="gymAccount" value="true">Register</button>
+  </form>
+</div>
+<script>
+  const gymAccountButton = document.getElementById('gymAccountButton');
+const userAccountButton = document.getElementById('userAccountButton');
+const userAccountForm = document.getElementById('userAccount');
+const gymAccountForm = document.getElementById('gymAccount');
 
-<script src="register.js"></script>
+
+gymAccountButton.addEventListener('click', () => {
+  gymAccountButton.classList.add('active');
+  userAccountButton.classList.remove('active');
+  gymAccountForm.style.display = "block"
+  userAccountForm.style.display = "none"
+});
+
+userAccountButton.addEventListener('click', () => {
+  userAccountButton.classList.add('active');
+  gymAccountButton.classList.remove('active');
+  userAccountForm.style.display = "block"
+  gymAccountForm.style.display = "none"
+});
+
+</script>
   

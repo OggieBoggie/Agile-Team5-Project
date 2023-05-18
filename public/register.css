@@ -55,7 +55,7 @@ body {
 .small {
   font-size: 12px;
   font-weight: bold;
-  color: red;
+  color: grey;
 }
 .active{
   background-color: grey;
