@@ -405,6 +405,7 @@ let gymController = {
     const gyms = []
     for (const gymAccount of req.database.gymAccounts) {
       for (const gym of gymAccount.gyms) {
+        gym["manager"] = gymAccount.name
         gyms.push(gym)
       }
     }
