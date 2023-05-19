@@ -6,6 +6,9 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link" href="/logout">Logout</a>
+      <% if (user) { %>
+        <a class="nav-item nav-link text-right" href=<%= "/user/" + user.id %>>Profile</a>
+        <% } %>
     </div>
   </div>
 </nav>

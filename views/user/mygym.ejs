@@ -1,0 +1,27 @@
+<header class="p-3 mb-2 bg-dark text-white">
+    <h1><%= user.myGym.name %></h1>
+  </header>
+  
+ <form action=""></form>
+      <div>
+        <ul>
+            <% for (let e of user.myGym.equipment) { %>
+                <li> <%= e %> <a href="/user/<%= user.id %>/myGym/delete/<%= e %>">|   Delete   |</a></li>
+            <% } %>
+        </ul>
+      </div>
+
+    <form action="/user/<%= user.id %>/myGym/" method="POST">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <select class="form-control" id="name" name="name" required>
+                <option disabled selected>Select</option>
+                <% for (const e of equipmentArray) { %>
+                        <option value="<%= e %>"><%= e %></option>
+                        <% } %>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-outline-secondary">Add Equipment</button>
+            </form>
+
+

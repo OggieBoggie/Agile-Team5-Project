@@ -19,11 +19,12 @@ let gymController = {
   home: (req, res) => {
     request = req;
     console.log(req.user);
+    user = req.user
     gyms = req.user.gyms;
     if (req.user.gymAccount) {
-      res.render("manager/gymhomepage"), { gyms };
+      res.render("manager/gymhomepage"), { gyms, user };
     } else {
-      res.render("gym/homepage"), { request };
+      res.render("gym/homepage"), { request, user };
     }
   },
   randomWorkout: (req, res) => {
@@ -410,7 +411,70 @@ let gymController = {
     }
     console.log(gyms)
     res.render("gym/gyms" , { gyms })
+  },
+  userPage: (req,res) => {
+    let user = req.user
+    res.render("user/userpage", { user })
+  },
+  addMyGym: (req,res) => {
+    let myGymObject = {
+      name : req.body.name,
+      equipment: []
+    }
+    req.user.myGym = myGymObject
+    let user = req.user
+    let dbUser = req.database.users.find(dbUser => {return req.user.id === dbUser.id})
+    dbUser.myGym = myGymObject
+    let dataString = JSON.stringify(req.database);
+    fs.writeFileSync("../userDatabase.json", dataString);
+    res.render('user/userpage', { user })
+  },
+  manageMyGym: (req,res) => {
+    user = req.user
+    let equipmentArray = [];
+    for (let ex of database.exercises) {
+      for (let e of ex.equipment) {
+        if (equipmentArray.includes(e)) {
+        } else {
+          if (e === 'none') {
+          }else {
+            equipmentArray.push(e);
+          }
+        }
+      }
+    }
+    res.render('user/mygym', { user, equipmentArray })
+  },
+  editMyGym: (req,res) => {
+    if (req.body.name) {
+
+      let dbUser = req.database.users.find(dbUser => {return dbUser.id === req.user.id})
+      if (req.user.myGym.equipment.includes(req.body.name)) {
+        res.redirect('/user/:id/myGym')
+      } else {
+        dbUser.myGym.equipment.push(req.body.name)
+        req.user.myGym.equipment.push(req.body.name)
+        let dataString = JSON.stringify(req.database);
+        fs.writeFileSync("../userDatabase.json", dataString);
+        
+        res.redirect('/user/:id/myGym')
+      }
+    } else{
+      res.redirect('/user/:id/myGym')
+    }
+  },
+  deleteMyGym: (req,res) => {
+    console.log(req.params.equipment)
+    eqIndex = req.user.myGym.equipment.findIndex(eq => {return eq === req.params.equipment})
+    console.log(eqIndex)
+    req.user.myGym.equipment.splice(eqIndex, 1)
+    dbUser = req.database.users.find(dbUser => {return dbUser.id === req.user.id})
+    dbUser.myGym.equipment.splice(eqIndex,1)
+    let dataString = JSON.stringify(req.database);
+    fs.writeFileSync("../userDatabase.json", dataString);
+    res.redirect('/user/:id/myGym')
   }
 };
+
 
 module.exports = gymController;

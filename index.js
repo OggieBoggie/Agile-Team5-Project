@@ -58,6 +58,15 @@ app.get("/selectworkout",ensureAuthenticated, sessionUserDatabase,gymController.
 app.get("/selectworkout/:id",ensureAuthenticated, sessionUserDatabase,gymController.displayWorkout)
 app.get("/gyms",ensureAuthenticated, sessionUserDatabase,gymController.viewGyms)
 
+// User Profile Routes
+app.get("/user/:id", ensureAuthenticated, sessionUserDatabase, gymController.userPage)
+app.post("/user/:id", ensureAuthenticated, sessionUserDatabase, gymController.addMyGym)
+app.get("/user/:id/myGym", ensureAuthenticated, sessionUserDatabase, gymController.manageMyGym)
+app.post("/user/:id/myGym", ensureAuthenticated, sessionUserDatabase, gymController.editMyGym)
+app.get("/user/:id/myGym/delete/:equipment", ensureAuthenticated, sessionUserDatabase, gymController.deleteMyGym)
+
+
+
 
 // Manager Routes
 app.get("/addgym", ensureAuthenticated,sessionUserDatabase, gymController.viewAddGym)

@@ -1,0 +1,43 @@
+
+<<header class="p-3 mb-2 bg-dark text-white">
+    <h1><%= user.name %>'s Profile</h1>
+
+</header>
+<div style="display:grid; grid-template-columns:3fr 4fr;">
+    <aside style="grid-column: 1/2;">
+    <div style="display: flex;justify-content: flex-start;align-items: center;" >
+        <h5 class=" mb-1" style="margin-left:20px">Email: <%=user.email%></h5>
+        <a type="button" class="btn btn-secondary" style="margin: 5px;">Change Email</a>
+    </div>
+    <div style="display: flex;justify-content: flex-start;align-items: center;">
+        <h5 class="mb-1" style="margin-left:20px">Password:</h5>
+        <a type="button" class="btn btn-secondary" style="margin:5px; margin-left:145px" >Change Password</a>
+    </div>
+</aside>
+    <div style="grid-column: 2/3;" class="container">
+        <% if (user.myGym === 'none') { %>
+            <form action=<%= "/user/" + user.id %> method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="myGymName" placeholder="Gym Name" name="name" required>
+                </div>
+                <button type="submit" class="btn btn-success">+ Add Gym</button>
+            </form>
+            <% } else { %>
+                <div class="card m-4">
+                    <div class="card-header"> <b><%= user.myGym.name%></b></div>
+                    <div class="card-body">
+                        <ol class="card-text">
+                          <% for (let e of user.myGym.equipment) { %>
+                            <li class="card-text"> <%= e %></li>
+                            <% } %>
+                        </ol>
+                        <a type="button" class="btn btn-secondary" style="margin:5px;" href=<%= "/user/" + user.id + "/myGym" %> >Manage MyGym</a>
+                        <a type="button" class="btn btn-danger" href=<%= "/user/" + user.id + "/myGymDelete" %> >Delete MyGym</a>
+                    </div>
+                </div>
+
+                <% } %>
+    </div>    
+
+</div>
