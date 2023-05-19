@@ -22,10 +22,13 @@ const {
         const email = 'johndoe@gmail.com';
         const password = '123';
 
+        const ea = "14"
+        const ps = "12"
+
         // create mockUser data
         const mockUser = {
-          email,
-          password,
+          ea,
+          ps,
         };
 
         // try to find mockUser data

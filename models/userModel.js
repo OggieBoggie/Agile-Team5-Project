@@ -32,7 +32,7 @@ const userModel = {
     userDatabase = JSON.parse(data)
     const user = userDatabase["users"].find((user) => user.id === id);
     if (user) {
-      return user;
+      return 123;
     } else {
       const user = userDatabase["gymAccounts"].find(
         (user) => user.id === id
