@@ -5,3 +5,10 @@ body{
 aside{
     background-color: #F4F4F9;
 }
+
+.workoutButton:hover {
+    background-color: #5cb85c;
+    transition: 0.4s;
+    color:var(--h, white);
+
+}

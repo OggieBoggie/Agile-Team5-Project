@@ -1,0 +1,6 @@
+.navButton:hover{
+    background-color: #5cb85c;
+    transition: 0.4s;
+    color:var(--h, white);
+    border-radius: 8px;
+}

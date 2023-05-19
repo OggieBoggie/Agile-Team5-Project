@@ -29,7 +29,7 @@
         </ul>
       </div>
  
-
+      <!-- class="d-flex align-items-start flex-row bd-highlight ml-4 workoutDiv" -->
 
 </header>
 <aside>
@@ -38,7 +38,7 @@
   <div class="d-flex flex-column">
         <div class="d-flex align-items-start flex-row bd-highlight ml-4 workoutDiv">
             <% for (let w of workouts) { %>
-                <a type="button" class="workoutButton btn btn-outline-secondary ml-2 mb-3" href=<%= "/selectworkout/" + w.id %>><%= w["name"] %></a>
+                <a type="button" class="workoutButton btn border-secondary ml-2 mb-3" href=<%= "/selectworkout/" + w.id %>><%= w["name"] %></a>
             <% } %>
         </div>
       <div>
