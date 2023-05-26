@@ -10,12 +10,3 @@ Once you have done that, run `npm start` to run the application.
 It will direct you to the link [http://localhost:3000/home].
 
 You should register a user so you can log in.
-
-There are no gyms registered. You may have to register your own gym account.
-
-To register your gym:
-
-1. Create a gym owner account.
-2. Login to the account.
-3. Create a gym.
-4. Register appropriate equipment.
