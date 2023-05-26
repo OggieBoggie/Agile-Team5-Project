@@ -114,6 +114,6 @@ header .icon span:last-child {
     font-size: 25px;
 }
 
-.progress-background {
-    background-color: lightgray;
+#table:hover {
+    background-color: #449d44;
 }
