@@ -113,3 +113,7 @@ header .icon span:last-child {
     padding: 20px 20px 0px 20px;
     font-size: 25px;
 }
+
+#table:hover {
+    background-color: #449d44;
+}
