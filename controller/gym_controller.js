@@ -385,6 +385,10 @@ let gymController = {
       stock: req.body.stock,
       condition: req.body.condition
     };
+
+    if (req.body.repairNote) {
+      newEquipment.repairNote = req.body.repairNote
+    }
     let gymAc = req.database.gymAccounts.find((gymAc) => {
       return gymAc.id === req.user.id;
     });
@@ -402,7 +406,6 @@ let gymController = {
         gyms.push(gym)
       }
     }
-    console.log(gyms)
     res.render("gym/gyms" , { gyms })
   }
 };
