@@ -196,7 +196,7 @@ let Database = {
         },
         {
           "id": 20,
-          "exercise": "Box jumps",
+          "exercise": "Box Jumps",
           "muscleGroups": ["quads", "glutes"],
           "equipment": ['box', 'bench'],
           "description": "Stand in front of a box or bench, jump onto the box with both feet, then jump back down.",
@@ -284,15 +284,63 @@ let Database = {
           "video": "https://www.youtube.com/embed/jO2Jl9eZpXk",
           "sets": "3",
           "reps": "8-12"
+        },
+        {
+          "id": 29,
+          "exercise": "Body Weight Squats",
+          "muscleGroups": ["Quads"],
+          "equipment": ["None"],
+          "description": "Stand with your feet shoulder-width apart and your toes pointed slightly outward. Keep your back straight and your abs tight as you lower your body as if you're sitting on a chair. Squat down until your thighs are parallel to the ground, then stand up straight",
+          "video": "https://www.youtube.com/embed/m0GcZ24pK6k",
+          "sets": "2-3",
+          "reps": "12-15"
+        },
+        {
+          "id": 30,
+          "exercise": "Glute Bridges",
+          "muscleGroups": ["Glutes"],
+          "equipment": ["None"],
+          "description": "Lie on your back with your knees bent and your feet flat on the ground. Lift your hips off the ground, squeezing your glutes as you lift. Hold for a second, then lower your hips back down to the ground.",
+          "video": "https://www.youtube.com/embed/3nQeWv5Tx1A",
+          "sets": "2-3",
+          "reps": "12-15"
+        },
+        {
+          "id": 31,
+          "exercise": "DB Romanian Deadlifts",
+          "muscleGroups": ["Glutes, Hamstrings"],
+          "equipment": ["DBs"],
+          "description": "Choose a DB weight challenges you but still allows you to maintain proper form. Stand with your feet hip-width apart and the barbell in front of you. Keep your back straight and your core tight as you hinge forward at the hips, lowering the barbell down your legs until you feel a stretch in your hamstrings. Stand up straight, squeezing your glutes at the top of the movement",
+          "video": "https://www.youtube.com/embed/UsOjCcxSJaI",
+          "sets": "3",
+          "reps": "8-12"
+        },
+        {
+          "id": 32,
+          "exercise": "DB Squats",
+          "muscleGroups": ["Quads"],
+          "equipment": ["DBs"],
+          "description": "Choose a DB weight that challenges you but still allows you to maintain proper form. Stand with your feet shoulder-width apart and your toes pointed slightly outward. Place the DB in a front rack position. Keep your back straight and your core tight as you squat down until your thighs are parallel to the ground, then stand up straight",
+          "video": "https://www.youtube.com/embed/a-dqF4NL2K4",
+          "sets": "3",
+          "reps": "8-12"
+        },
+        {
+          "id": 33,
+          "exercise": "Barbell Sumo Deadlifts",
+          "muscleGroups": ["Glutes, Hamstrings"],
+          "equipment": ["Barbell"],
+          "description": "Load a barbell with a weight that challenges you but still allows you to maintain proper form. Stand with your feet wider than shoulder-width apart and your toes pointed outward. Keep your back straight and your core tight as you hinge forward at the hips, lowering the barbell down your legs until you feel a stretch in your hamstrings. Stand up straight, squeezing your glutes at the top of the movement",
+          "video": "https://www.youtube.com/embed/sVzt89-iXoM",
+          "sets": "4",
+          "reps": "6"
         }
       ],
     workouts : [
         {
             'id' : 1,
             'name': 'Beginner Upper Body Workout',
-            'exercise_list': ['DB Chest Press', 'SA DB Row', 'Seated DB Shoulder Press', 'Tricep dips', 'Bicep curls'],
-            'sets': 2-3,
-            'reps': 12-20
+            'exercise_list': ['DB Chest Press', 'SA DB Row', 'Seated DB Shoulder Press', 'Tricep dips', 'Bicep curls']
         },
         {
             'id' : 2,
@@ -305,18 +353,33 @@ let Database = {
             'exercise_list': ['Weighted Pull-Ups', 'Incline DB bench press', 'Standing Military Press', 'Barbell Rows', 'Skull Crushers']
         },
         {
-            'id' : 4,
-            'name' : 'Core 1',
+          'id' : 4,
+          'name' : 'Beginner Lower Body Workout',
+          'exercise_list': ['Body Weight Squats', 'Lunges', 'Glute Bridges', 'Calf raises']
+        },
+        {
+          'id' : 5,
+          'name' : 'Intermediate Lower Body Workout',
+          'exercise_list': ['DB Squats','DB Deadlifts', 'DB Bulgarian split squats', 'DB Romanian Deadlifts']
+        },
+        {
+          'id' : 6,
+          'name' : 'Advanced Lower Body Workout',
+          'exercise_list': ['Barbell Squats', 'Barbell Sumo Deadlifts', 'DB Bulgarian split squats', 'Box Jumps']
+        },
+        {
+            'id' : 7,
+            'name' : 'Core Workout Number 1',
             'exercise_list': ['Side plank', 'Russian twists', 'Plank']
         },
         {
-            'id' : 5,
-            'name' : 'Beginner 1',
+            'id' : 8,
+            'name' : 'Beginner Full-Body Workout 1',
             'exercise_list': ['Burpees', 'Lunges', "Barbell Squats", 'Push-ups',  'Calf raises']
         },
         {
-            'id' : 6,
-            'name' : 'Intermediate 1',
+            'id' : 9,
+            'name' : 'Intermediate Full-Body Workout 1',
             'exercise_list': ['Push-ups', 'DB Deadlifts', 'Pull-ups', 'Barbell Bench press', 'Bicep curls']
         },
     ]

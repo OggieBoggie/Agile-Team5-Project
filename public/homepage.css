@@ -56,3 +56,31 @@ section{
     background-size: cover;
     color: black;
 }
+
+/*====================Homepage Buttons================*/
+
+.homepageButton:hover {
+    background-color: #5cb85c;
+    transition: 0.4s;
+    color:var(--h, white);
+}
+
+
+/*==================MOBILE=======================*/
+@media screen and (max-width: 800px){
+
+    body{
+        display: block;
+    }
+
+    .navbar{
+        height: 100px;
+    }
+
+    section{
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+}

@@ -1,42 +1,61 @@
 <header class="p-3 mb-2 bg-dark text-white">
     <h1>Gyms</h1>
+    <div class="input-group pt-3">
+      <input type="text" class="form-control" aria-label="Text input with dropdown button" id="searchBar" placeholder="Search">
+      <div class="form-group">
+        <select class="form-control" id="conditionInput" name="condition" onchange="changeSearchType()" required>
+          <option value="Name">Name</option>
+          <option value="Address">Address</option>
+          <option value="Manager">Manager</option>
+        </select>
+      </div>
+    </div>
 </header>
 <aside>
-            <div class="d-flex flex-row justify-content-between flex-wrap" style="width: 100%;">
-              <% for (let g of gyms) { %>
-              <div class="card border-dark bg-light m-2" style="width: 21rem;">
-                <div class="card-header"><b><%= g.name %> - <%= g.address %></b>
-                <p>Phone: <%= g.phone %></p></div>
-                <div class="card-body text-dark">
-                  <h1 style="font-size: 20px;">Equipment</h1>
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Stock</th>
-                        <th scope="col">Condition</th>
-                      </tr>
-                    </thead>
-                    <% for (const e of g.equipment) { %>
-                    <tbody>
-                      <tr>
-                        <th scope="row"><%= e.name %></th>
-                        <td><%= e.stock %></td>
-                        <td><% if (e.condition == "Good") { %>
-                          <span class="badge badge-success"><%= e.condition %></span>
-                        <% } else if (e.condition == "Moderate") { %>
-                          <span class="badge badge-warning"><%= e.condition %></span>
-                        <% } else { %>
-                          <span class="badge badge-danger"><%= e.condition %></span>
-                        <% } %></td>
-                      </tr>
-                    </tbody>
-                    <% } %>
-                  </table>
-                </div>
-           </div><% } %>
+  <div class="d-flex flex-row flex-wrap" style="width: 100%;">
+    <% for (let g of gyms) { %>
+    <div class="card border-dark bg-light m-2" style="width: 21rem;">
+        <div class="card-header">
+          <p><b class="gym-name"><%= g.name %></b> - <b class="gym-address"><%= g.address %></b>
         </div>
+        <div class="card-body">
+            <p class="gym-manager">Manager: <%= g.manager %></p>
+            <p>Gym Phone: <%= g.phone %></p>
+        </div>
+    </div><% } %>
     </div>
+  </div>
 </aside>
+<script>
+  const searchBar = document.getElementById('searchBar');
+  const items = document.getElementsByClassName("card");
+  let filter = ".gym-name"
+
+  searchBar.addEventListener('input', function(event) {
+  const searchTerm = event.target.value.toLowerCase();
+
+  for (let i = 0; i < items.length; i++) {
+    const item = items[i];
+    const itemName = item.querySelector(filter).innerText.toLowerCase();
+
+    if (itemName.includes(searchTerm)) {
+      item.style.display = 'block';  // Show the item
+    } else {
+      item.style.display = 'none';   // Hide the item
+    }
+  }
+});
+
+  const changeSearchType = () => {
+    const option = document.getElementById('conditionInput').value;
+    if (option == "Name") {
+      filter = ".gym-name"
+    } else if (option == "Address") {
+      filter = ".gym-address"
+    } else {
+      filter = ".gym-manager"
+    }
+  }
+</script>
 
 

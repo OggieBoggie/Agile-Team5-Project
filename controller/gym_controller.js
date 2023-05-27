@@ -317,17 +317,10 @@ let gymController = {
 
     req.user.gyms[gymIndex].equipment[equipmentIndex].name = req.body.name;
     req.user.gyms[gymIndex].equipment[equipmentIndex].stock = req.body.stock;
-    req.user.gyms[gymIndex].equipment[equipmentIndex].condition =
-      req.body.condition;
-      req.database.gymAccounts[userIndex].gyms[gymIndex].equipment[
-        equipmentIndex
-      ].name = req.body.name;
-      req.database.gymAccounts[userIndex].gyms[gymIndex].equipment[
-        equipmentIndex
-      ].stock = req.body.stock;
-      req.database.gymAccounts[userIndex].gyms[gymIndex].equipment[
-        equipmentIndex
-      ].condition = req.body.condition;
+    req.user.gyms[gymIndex].equipment[equipmentIndex].condition = req.body.condition;
+    req.database.gymAccounts[userIndex].gyms[gymIndex].equipment[equipmentIndex].name = req.body.name;
+    req.database.gymAccounts[userIndex].gyms[gymIndex].equipment[equipmentIndex].stock = req.body.stock;
+    req.database.gymAccounts[userIndex].gyms[gymIndex].equipment[equipmentIndex].condition = req.body.condition;
       
       if (req.body.condition == "Bad") {
         req.user.gyms[gymIndex].equipment[equipmentIndex].repairNote = req.body.repairNote;
@@ -406,6 +399,7 @@ let gymController = {
     const gyms = []
     for (const gymAccount of req.database.gymAccounts) {
       for (const gym of gymAccount.gyms) {
+        gym["manager"] = gymAccount.name
         gyms.push(gym)
       }
     }

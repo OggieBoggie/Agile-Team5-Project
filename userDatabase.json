@@ -1,0 +1,202 @@
+{
+    "gyms": [],
+    "gymAccounts": [
+      {
+        "id": "G1",
+        "name": "John Smith",
+        "email": "johnny123@gmail.com",
+        "password": "gym",
+        "gymAccount": true,
+        "gyms": [
+          {
+            "id": 1,
+            "name": "John's Gym",
+            "address": "321 Taylor Drive",
+            "equipment": [],
+            "phone": "604-123-123",
+            "manager": "John Smith"
+          },
+          {
+            "id": 2,
+            "name": "Cool Gym",
+            "address": "321 Donald Road",
+            "equipment": [],
+            "phone": "604-123-213",
+            "manager": "John Smith"
+          },
+          {
+            "id": 3,
+            "name": "Fitness First",
+            "address": "123 Main Street",
+            "equipment": [],
+            "phone": "604-456-789",
+            "manager": "John Smith"
+          },
+          {
+            "id": 4,
+            "name": "Power Fit",
+            "address": "456 Elm Avenue",
+            "equipment": [],
+            "phone": "604-987-654",
+            "manager": "John Smith"
+          },
+          {
+            "id": 5,
+            "name": "Fit World",
+            "address": "789 Oak Street",
+            "equipment": [],
+            "phone": "604-321-654",
+            "manager": "John Smith"
+          }
+        ]
+      },
+      {
+        "id": "G2",
+        "name": "Alex Wilson",
+        "email": "alex.wilson@example.com",
+        "password": "fitness123",
+        "gymAccount": true,
+        "gyms": [
+          {
+            "id": 1,
+            "name": "Fitness Zone",
+            "address": "987 Elm Street",
+            "equipment": [],
+            "phone": "604-654-321",
+            "manager": "Alex Wilson"
+          },
+          {
+            "id": 2,
+            "name": "Body Sculpt",
+            "address": "456 Oak Avenue",
+            "equipment": [],
+            "phone": "604-789-123",
+            "manager": "Alex Wilson"
+          },
+          {
+            "id": 3,
+            "name": "Flex Fitness",
+            "address": "789 Maple Road",
+            "equipment": [],
+            "phone": "604-987-654",
+            "manager": "Alex Wilson"
+          },
+          {
+            "id": 4,
+            "name": "Elite Gym",
+            "address": "123 Pine Street",
+            "equipment": [],
+            "phone": "604-321-987",
+            "manager": "Alex Wilson"
+          },
+          {
+            "id": 5,
+            "name": "Strength Haven",
+            "address": "321 Cedar Avenue",
+            "equipment": [],
+            "phone": "604-654-987",
+            "manager": "Alex Wilson"
+          }
+        ]
+      },
+      {
+        "id": "G3",
+        "name": "Sarah Davis",
+        "email": "sarah.davis@example.com",
+        "password": "gym123",
+        "gymAccount": true,
+        "gyms": [
+          {
+            "id": 1,
+            "name": "Fit Club",
+            "address": "789 Birch Road",
+            "equipment": [],
+            "phone": "604-987-654",
+            "manager": "Sarah Davis"
+          },
+          {
+            "id": 2,
+            "name": "Sweat Zone",
+            "address": "123 Elm Street",
+            "equipment": [],
+            "phone": "604-654-321",
+            "manager": "Sarah Davis"
+          },
+          {
+            "id": 3,
+            "name": "Active Fitness",
+            "address": "456 Oak Avenue",
+            "equipment": [],
+            "phone": "604-789-123",
+            "manager": "Sarah Davis"
+          },
+          {
+            "id": 4,
+            "name": "Vitality Gym",
+            "address": "789 Maple Road",
+            "equipment": [],
+            "phone": "604-987-654",
+            "manager": "Sarah Davis"
+          },
+          {
+            "id": 5,
+            "name": "FitLife Center",
+            "address": "123 Pine Street",
+            "equipment": [],
+            "phone": "604-321-987",
+            "manager": "Sarah Davis"
+          }
+        ]
+      },
+      {
+        "id": "G4",
+        "name": "Michael Johnson",
+        "email": "michael.johnson@example.com",
+        "password": "active123",
+        "gymAccount": true,
+        "gyms": [
+          {
+            "id": 1,
+            "name": "GymWorks",
+            "address": "321 Oak Avenue",
+            "equipment": [],
+            "phone": "604-654-321",
+            "manager": "Michael Johnson"
+          },
+          {
+            "id": 2,
+            "name": "Iron Strong",
+            "address": "789 Maple Road",
+            "equipment": [],
+            "phone": "604-987-654",
+            "manager": "Michael Johnson"
+          },
+          {
+            "id": 3,
+            "name": "FitZone",
+            "address": "123 Pine Street",
+            "equipment": [],
+            "phone": "604-321-987",
+            "manager": "Michael Johnson"
+          },
+          {
+            "id": 4,
+            "name": "ActiveFit",
+            "address": "456 Elm Street",
+            "equipment": [],
+            "phone": "604-789-123",
+            "manager": "Michael Johnson"
+          },
+          {
+            "id": 5,
+            "name": "PowerHouse Gym",
+            "address": "789 Birch Road",
+            "equipment": [],
+            "phone": "604-987-654",
+            "manager": "Michael Johnson"
+          }
+        ]
+      }
+    ]
+  }
+  
