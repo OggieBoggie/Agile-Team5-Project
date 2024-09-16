@@ -17,7 +17,7 @@ fs.readFile('../userDatabase.json', (err,data) => {
 let authController = {
   login: (req, res) => {
     request = req
-    res.render("auth/login"), {request};
+    res.render("auth/home"), {request};
   },
 
   register: (req, res) => {
